@@ -11,10 +11,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getClientes() {
-    return this.http.get<any>('../../assets/data.json')
-    .toPromise()
-    .then(res => <Cliente[]>res.data)
-    .then(data => { return data; });
+    return this.http.get<any>('../../assets/data.json').pipe()
 }
 
 }
