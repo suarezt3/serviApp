@@ -1,24 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CrudComponent } from './crud/crud.component';
+import { TableComponent } from './table/table.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 
 import { PrimengModule } from '../primeNG/primeng.module';
+import { FormComponent } from './form/form.component';
+import { CardClientComponent } from './card-client/card-client.component';
 
 
 
 @NgModule({
   declarations: [
-    CrudComponent,
+    TableComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FormComponent,
+    CardClientComponent
   ],
   exports: [
-    CrudComponent,
+    TableComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FormComponent,
+    CardClientComponent
   ],
   imports: [
     CommonModule,

@@ -4,11 +4,11 @@ import { DataService } from 'src/app/services/data.service';
 
 
 @Component({
-  selector: 'app-crud',
-  templateUrl: './crud.component.html',
-  styleUrls: ['./crud.component.css']
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.css']
 })
-export class CrudComponent implements OnInit {
+export class TableComponent implements OnInit {
 
   public data: any = []
 
