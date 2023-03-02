@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PrimengModule } from '../primeNG/primeng.module';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -13,6 +14,7 @@ import { PrimengModule } from '../primeNG/primeng.module';
   ],
   imports: [
     CommonModule,
+    RouterLink,
     PrimengModule
   ],
   exports: [

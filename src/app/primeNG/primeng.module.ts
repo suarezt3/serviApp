@@ -7,6 +7,10 @@ import {ToastModule} from 'primeng/toast';
 import {ButtonModule} from 'primeng/button';
 import {FileUploadModule} from 'primeng/fileupload';
 import {TableModule} from 'primeng/table';
+import {InputTextModule} from 'primeng/inputtext';
+import {DropdownModule} from 'primeng/dropdown';
+import {InputNumberModule} from 'primeng/inputnumber';
+
 
 
 
@@ -17,14 +21,20 @@ import {TableModule} from 'primeng/table';
     ToastModule,
     ButtonModule,
     FileUploadModule,
-    TableModule
+    TableModule,
+    InputTextModule,
+    DropdownModule,
+    InputNumberModule
   ],
   exports: [
     ToolbarModule,
     ToastModule,
     ButtonModule,
     FileUploadModule,
-    TableModule
+    TableModule,
+    InputTextModule,
+    DropdownModule,
+    InputNumberModule
   ]
 })
 export class PrimengModule { }
