@@ -8,7 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { PrimengModule } from '../primeNG/primeng.module';
 import { FormComponent } from './form/form.component';
 import { CardClientComponent } from './card-client/card-client.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -30,6 +30,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     PrimengModule,
   ]
 })

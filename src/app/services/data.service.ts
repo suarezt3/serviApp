@@ -11,7 +11,13 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getClientes() {
-    return this.http.get<any>('../../assets/data.json').pipe()
+    return this.http.get<any>('../../assets/json/data.json').pipe()
 }
+
+
+getBrandVehicles() {
+  return this.http.get<any>('../../assets/json/brands.json')
+}
+
 
 }

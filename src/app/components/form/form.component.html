@@ -1,9 +1,78 @@
-<div class="field">
-  <label for="username1" class="block">Nombres</label>
-  <input id="username1" type="username" aria-describedby="username1-help" pInputText  />
+
+<div class="title">
+  <h1>Ingresa los datos del cliente</h1>
 </div>
-<div class="field col-12 md:col-3">
-  <label for="withoutgrouping">Numero de documento</label>
-  <p-inputNumber mode="decimal" inputId="withoutgrouping" [useGrouping]="false">
-  </p-inputNumber>
+<div class=" pb-4 pt-4 m-auto flex bg-blue-100 w-9 justify-content-evenly" [formGroup]="myForm" (ngSubmit)="save()" >
+  <div class="mx-8">
+    <label for="name">Nombres</label>
+    <div class="field col">
+      <input
+        class="input"
+        type="text"
+        formControlName="name"
+        id="name"
+        >
+    </div>
+    <label>Tipo de Documento</label>
+    <div class="field col">
+      <select  class="input" formControlName="documentType">
+        <option value="cedula">Cedula de ciudadania</option>
+        <option value="nit">NIT</option>
+      </select>
+    </div>
+
+    <label for="phone">Telefono</label>
+    <div class="field col">
+      <input class="input" id="phone" type="number" formControlName="phone">
+    </div>
+
+    <label for="vehicleBrand">Marca del vehiculo</label>
+    <div class="field col">
+      <select class="input" formControlName="vehicleBrand" >
+        <option *ngFor="let item of brands.data"  [value]="item.brand">{{item.brand}}</option>
+      </select>
+  </div>
+
+  </div>
+
+  <div class="mx-8">
+    <label for="document">Numero de Documento</label>
+    <div class="field col">
+      <input class="input" id="document" type="number" formControlName="numberDocument">
+    </div>
+
+    <label for="address"> Direccion</label>
+    <div class="field col">
+      <input
+          class="input"
+          id="address"
+          type="text"
+          formControlName="address">
+    </div>
+
+    <label for="vehicleType"> Tipo de vehiculo</label>
+    <div class="field col">
+      <select class="input" formControlName="vehicleType">
+        <option value="automovil">Automovil</option>
+        <option value="camioneta">Camioneta</option>
+        <option value="vehiculo pesado"> Vehiculo pesado</option>
+      </select>
+    </div>
+
+    <label for="plate">Placa</label>
+    <div class="field col">
+      <input class="input" id="plate" type="text" formControlName="plate">
+    </div>
+
+    <div>
+      <button (click)="save()" pButton pRipple type="button" class="p-button-success btn">Guardar</button>
+    </div>
+  </div>
+
+
+
+
+
+
 </div>
+

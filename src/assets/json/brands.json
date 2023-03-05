@@ -1,0 +1,129 @@
+{
+ "data": [
+{
+  "id": 1,
+  "brand": "Ford"
+},
+{
+  "id": 2,
+  "brand": "Mazda"
+},
+{
+  "id": 3,
+  "brand": "Chevrolet"
+},
+{
+  "id": 4,
+  "brand": "Toyota"
+},
+{
+  "id": 5,
+  "brand": "Kia"
+},
+{
+  "id": 6,
+  "brand": "Suzuki"
+},
+{
+  "id": 7,
+  "brand": "Dodge"
+},
+{
+  "id": 8,
+  "brand": "Renault"
+},
+{
+  "id": 9,
+  "brand": "Nissan"
+},
+{
+  "id": 10,
+  "brand": "Foton"
+},
+{
+  "id": 11,
+  "brand": "BYD"
+},
+{
+  "id": 12,
+  "brand": "Great Wall"
+},
+{
+  "id": 13,
+  "brand": "JAC"
+},
+{
+  "id": 14,
+  "brand": "JMC"
+},
+{
+  "id": 15,
+  "brand": "DFSK"
+},
+{
+  "id": 16,
+  "brand": "Changan"
+},
+{
+  "id": 17,
+  "brand": "BMW"
+},
+{
+  "id": 18,
+  "brand": "Audi"
+},
+{
+  "id": 19,
+  "brand": "Citroen"
+},
+{
+  "id": 20,
+  "brand": "Fiat"
+},
+{
+  "id": 21,
+  "brand": "Honda"
+},
+{
+  "id": 22,
+  "brand": "GMC"
+},
+{
+  "id": 23,
+  "brand": "Hyundai"
+},
+{
+  "id": 24,
+  "brand": "Daihatsu"
+},
+{
+  "id": 25,
+  "brand": "Jeep"
+},
+{
+  "id": 26,
+  "brand": "Land Rover"
+},
+{
+  "id": 27,
+  "brand": "Mitsubishi"
+},
+{
+  "id": 28,
+  "brand": "Peugeot"
+},
+{
+  "id": 29,
+  "brand": "Mercedes-Benz"
+},
+{
+  "id": 30,
+  "brand": "Volkswagen"
+},
+{
+  "id": 31,
+  "brand": "Volvo"
+}
+]
+
+}
