@@ -1,8 +1,8 @@
 
 <div class="title">
-  <h1>Ingresa los datos del cliente</h1>
+  <h3>Ingresa los datos del cliente</h3>
 </div>
-<div class=" pb-4 pt-4 m-auto flex bg-blue-100 w-9 justify-content-evenly" [formGroup]="myForm" (ngSubmit)="save()" >
+<div class="form" [formGroup]="myForm" (ngSubmit)="save()" >
   <div class="mx-8">
     <label for="name">Nombres</label>
     <div class="field col">
@@ -12,6 +12,11 @@
         formControlName="name"
         id="name"
         >
+        <div class="error" *ngIf="invalidField('name')" >
+          <span  *ngIf="myForm.controls?.['name']?.errors?.['required']" > Campo Obligatorio </span>
+          <span  *ngIf="myForm.controls?.['name']?.errors?.['minlength']" > Minimo 5 caracteres </span>
+          <span  *ngIf="myForm.controls?.['name']?.errors?.['maxlength']" > Maximo 50 caracteres </span>
+        </div>
     </div>
     <label>Tipo de Documento</label>
     <div class="field col">
@@ -19,11 +24,17 @@
         <option value="cedula">Cedula de ciudadania</option>
         <option value="nit">NIT</option>
       </select>
+      <div class="error" *ngIf="invalidField('documentType')" >
+        <span  *ngIf="myForm.controls?.['documentType']?.errors?.['required']" > Campo Obligatorio </span>
+      </div>
     </div>
 
     <label for="phone">Telefono</label>
     <div class="field col">
       <input class="input" id="phone" type="number" formControlName="phone">
+      <div class="error" *ngIf="invalidField('phone')" >
+        <span  *ngIf="myForm.controls?.['phone']?.errors?.['required']" > Campo Obligatorio </span>
+      </div>
     </div>
 
     <label for="vehicleBrand">Marca del vehiculo</label>
@@ -31,6 +42,9 @@
       <select class="input" formControlName="vehicleBrand" >
         <option *ngFor="let item of brands.data"  [value]="item.brand">{{item.brand}}</option>
       </select>
+      <div class="error" *ngIf="invalidField('vehicleBrand')" >
+        <span  *ngIf="myForm.controls?.['vehicleBrand']?.errors?.['required']" > Campo Obligatorio </span>
+      </div>
   </div>
 
   </div>
@@ -39,6 +53,9 @@
     <label for="document">Numero de Documento</label>
     <div class="field col">
       <input class="input" id="document" type="number" formControlName="numberDocument">
+      <div class="error" *ngIf="invalidField('numberDocument')" >
+        <span  *ngIf="myForm.controls?.['numberDocument']?.errors?.['required']" > Campo Obligatorio </span>
+      </div>
     </div>
 
     <label for="address"> Direccion</label>
@@ -48,6 +65,11 @@
           id="address"
           type="text"
           formControlName="address">
+          <div class="error" *ngIf="invalidField('address')" >
+            <span  *ngIf="myForm.controls?.['address']?.errors?.['required']" > Campo Obligatorio </span>
+            <span  *ngIf="myForm.controls?.['address']?.errors?.['minlength']" > Minimo 5 caracteres </span>
+            <span  *ngIf="myForm.controls?.['address']?.errors?.['maxlength']" > Maximo 50 caracteres </span>
+          </div>
     </div>
 
     <label for="vehicleType"> Tipo de vehiculo</label>
@@ -57,11 +79,22 @@
         <option value="camioneta">Camioneta</option>
         <option value="vehiculo pesado"> Vehiculo pesado</option>
       </select>
+      <div class="error" *ngIf="invalidField('vehicleType')" >
+        <span  *ngIf="myForm.controls?.['vehicleType']?.errors?.['required']" > Campo Obligatorio </span>
+      </div>
     </div>
 
     <label for="plate">Placa</label>
     <div class="field col">
-      <input class="input" id="plate" type="text" formControlName="plate">
+      <input
+            class="input"
+            id="plate"
+            type="text"
+            formControlName="plate">
+            <div class="error" *ngIf="invalidField('plate')" >
+              <span  *ngIf="myForm.controls?.['plate']?.errors?.['required']" > Campo Obligatorio </span>
+              <span  *ngIf="myForm.controls?.['plate']?.errors?.['minlength']" > Minimo 6 caracteres </span>
+            </div>
     </div>
 
     <div>

@@ -1,10 +1,29 @@
+
+.form {
+  background-color: rgb(148, 186, 255);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px 0;
+  border-radius: 3px;
+}
+
 .input {
   border: none;
   border-radius: 3px;
-  height: 30px;
+  height: 35px;
   width: 240px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .title{
   text-align: center;
+}
+
+.error {
+  color: rgb(245, 12, 12);
+  font-size: small;
 }
