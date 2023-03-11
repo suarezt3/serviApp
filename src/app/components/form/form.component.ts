@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
+import {MessageService} from 'primeng/api';
 import { __values } from 'tslib';
 
 
@@ -8,7 +9,8 @@ import { __values } from 'tslib';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.css'],
+  providers: [MessageService]
 })
 export class FormComponent implements OnInit  {
 
@@ -16,11 +18,11 @@ export class FormComponent implements OnInit  {
 
   myForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private brandService: DataService) {}
+  constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService) {}
 
   ngOnInit(): void {
 
-    this.brandService.getBrandVehicles().subscribe((resp) => {
+    this.dataService.getBrandVehicles().subscribe((resp) => {
       this.brands = resp
     })
 
@@ -30,9 +32,9 @@ export class FormComponent implements OnInit  {
       numberDocument : [  , [Validators.required]],
       address        : ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       phone          : ['', [Validators.required]],
-      vehicleType    : ['', [Validators.required]],
+      vehicle        : ['', [Validators.required]],
       vehicleBrand   : ['', [Validators.required]],
-      plate          : ['', [Validators.required, Validators.minLength(6)]]
+      plate          : ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]]
     })
 
   }
@@ -48,15 +50,15 @@ export class FormComponent implements OnInit  {
   }
 
   save() {
-
-    console.log("Formulario", this.myForm.value);
+    let dataForm: {}
+    dataForm = this.myForm.value
     if(this.myForm.invalid) {
       this.myForm.markAllAsTouched();
     }else {
+      this.dataService.createClient(dataForm).subscribe()
+      this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Cliente creado satisfactoriamente'});
       this.myForm.reset()
     }
-
-
 
   }
 

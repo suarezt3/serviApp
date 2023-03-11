@@ -1,4 +1,6 @@
 export const environment = {
-  apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdybmdvY3puY29qamJ0cGlhZmxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzgzMjM5MjIsImV4cCI6MTk5Mzg5OTkyMn0.vYXzFlw6S0kbEzuV8-9EoDF88Lu-DDs8BQ6l7_WVE3c",
+  production: false,
+  supabaseurl: "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients",
+  supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdybmdvY3puY29qamJ0cGlhZmxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzgzMjM5MjIsImV4cCI6MTk5Mzg5OTkyMn0.vYXzFlw6S0kbEzuV8-9EoDF88Lu-DDs8BQ6l7_WVE3c",
   authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdybmdvY3puY29qamJ0cGlhZmxmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY3ODMyMzkyMiwiZXhwIjoxOTkzODk5OTIyfQ.nqJSZyQab0ZX0EPJqs7MYAe85HGbS5HCmVV0NoCFczY",
 };

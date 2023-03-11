@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-
 
 @Injectable({
   providedIn: 'root'
@@ -10,22 +10,34 @@ export class DataService {
 
  private url: string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients";
 
-//  private apiKey = environment.apikey;
-//  private authorization = environment.authorization;
- private apikey: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdybmdvY3puY29qamJ0cGlhZmxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzgzMjM5MjIsImV4cCI6MTk5Mzg5OTkyMn0.vYXzFlw6S0kbEzuV8-9EoDF88Lu-DDs8BQ6l7_WVE3c";
- private authorization: string =  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdybmdvY3puY29qamJ0cGlhZmxmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY3ODMyMzkyMiwiZXhwIjoxOTkzODk5OTIyfQ.nqJSZyQab0ZX0EPJqs7MYAe85HGbS5HCmVV0NoCFczY";
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-
-
-
+/**
+ *
+ * @returns Trae la base de datos
+ */
   getClientes() {
     let headers = new HttpHeaders({
-      'apikey': this.apikey,
-      'Authorization': this.authorization })
+      'apikey'       : environment.supabaseKey,
+      'Authorization': environment.authorization
+    })
      return this.http.get<any>(this.url, {headers}).pipe()
 }
+
+
+  /**
+   *
+   * @param body Metodo para enviar el formualario
+   * @returns
+   */
+    createClient(body: {}): Observable<any> {
+      let headers = new HttpHeaders({
+        'apikey'       : environment.supabaseKey,
+        'Authorization': environment.authorization,
+        'Content-Type' : 'application/json',
+       })
+       return this.http.post<any>(this.url, body, {headers})
+    }
 
 
 getBrandVehicles() {

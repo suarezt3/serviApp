@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DataService } from 'src/app/services/data.service';
+import { Client } from 'src/interfaces/clients.interface';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class TableComponent implements OnInit {
 
-  public data: any = []
+  public data!: Client[]
 
 
   constructor(private clienteService: DataService) { }
@@ -18,10 +19,9 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.clienteService.getClientes().subscribe((resp) => {
-      console.log("DATA", resp);
       this.data = resp
-
     });
+
   }
 
 

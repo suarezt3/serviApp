@@ -1,6 +1,5 @@
-
 .form {
-  background-color: rgb(148, 186, 255);
+  background-color: lightgrey;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -27,3 +26,15 @@
   color: rgb(245, 12, 12);
   font-size: small;
 }
+
+.plate {
+  text-transform: uppercase;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] { -moz-appearance:textfield; }
