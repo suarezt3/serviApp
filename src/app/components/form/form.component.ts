@@ -32,7 +32,7 @@ export class FormComponent implements OnInit  {
       numberDocument : [  , [Validators.required]],
       address        : ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       phone          : ['', [Validators.required]],
-      vehicle        : ['', [Validators.required]],
+      vehicle        : ['', [Validators.required, Validators.maxLength(20)]],
       vehicleBrand   : ['', [Validators.required]],
       plate          : ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]]
     })

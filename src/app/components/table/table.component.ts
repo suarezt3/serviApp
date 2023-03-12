@@ -11,7 +11,9 @@ import { Client } from 'src/interfaces/clients.interface';
 })
 export class TableComponent implements OnInit {
 
-  public data!: Client[]
+  public data!: Client[];
+  first = 0;
+  rows = 10;
 
 
   constructor(private clienteService: DataService) { }
@@ -23,6 +25,23 @@ export class TableComponent implements OnInit {
     });
 
   }
+
+
+next() {
+    this.first = this.first + this.rows;
+}
+prev() {
+    this.first = this.first - this.rows;
+}
+reset() {
+    this.first = 0;
+}
+isLastPage(): boolean {
+    return this.data ? this.first === (this.data.length - this.rows): true;
+}
+isFirstPage(): boolean {
+    return this.data ? this.first === 0 : true;
+}
 
 
 }
