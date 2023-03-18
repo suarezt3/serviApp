@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Client } from 'src/interfaces/clients.interface';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -9,6 +10,7 @@ import { environment } from '../../environments/environment';
 export class DataService {
 
  private url: string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients";
+ private urlClient: string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?numberDocument=eq."
 
   constructor(private http: HttpClient) {}
 
@@ -22,6 +24,21 @@ export class DataService {
       'Authorization': environment.authorization
     })
      return this.http.get<any>(this.url, {headers}).pipe()
+}
+
+
+/**
+ *
+ * @param id Para obtener datos de un cliente
+ * @returns
+ */
+getClientDocument(id: string): Observable<Client> {
+  let headers = new HttpHeaders({
+    'apikey'       : environment.supabaseKey,
+    'Authorization': environment.authorization,
+  })
+
+   return this.http.get<Client>(`${this.urlClient}${id}`, {headers}).pipe()
 }
 
 

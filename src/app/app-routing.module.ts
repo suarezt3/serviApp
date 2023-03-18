@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'formulario', component: FormComponent },
   { path: 'tabla', component: TableComponent },
-  { path: 'cliente', component: CardClientComponent },
+  { path: ':id', component: CardClientComponent },
   { path: '**', component: TableComponent }
 
 ];
