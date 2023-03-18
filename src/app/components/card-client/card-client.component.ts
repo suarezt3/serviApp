@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class CardClientComponent {
 
+ public displayBasic2!: boolean;
+
+
+  showBasicDialog2() {
+    this.displayBasic2 = true;
+}
+
+
 }

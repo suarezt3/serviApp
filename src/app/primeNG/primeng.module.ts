@@ -10,6 +10,8 @@ import {TableModule} from 'primeng/table';
 import {InputTextModule} from 'primeng/inputtext';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {CardModule} from 'primeng/card';
+import {DialogModule} from 'primeng/dialog';
 
 
 
@@ -26,7 +28,9 @@ import {InputNumberModule} from 'primeng/inputnumber';
     TableModule,
     InputTextModule,
     DropdownModule,
-    InputNumberModule
+    InputNumberModule,
+    CardModule,
+    DialogModule
   ],
   exports: [
     ToolbarModule,
@@ -36,7 +40,9 @@ import {InputNumberModule} from 'primeng/inputnumber';
     TableModule,
     InputTextModule,
     DropdownModule,
-    InputNumberModule
+    InputNumberModule,
+    CardModule,
+    DialogModule
   ]
 })
 export class PrimengModule { }

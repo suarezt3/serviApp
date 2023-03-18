@@ -41,7 +41,7 @@ currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} clientes
           <td>{{data.vehicle}}</td>
           <td>{{data.plate | uppercase}}</td>
           <td>
-            <button pButton pRipple type="button" label="Ver mas" class="p-button-info btn"></button>
+            <button [routerLink]="['/cliente']" pButton pRipple type="button" label="Ver mas" class="p-button-info btn"></button>
             <button pButton pRipple type="button" label="Editar" class="p-button-danger btn"></button>
           </td>
       </tr>

@@ -1,1 +1,33 @@
-<p>card-client works!</p>
+
+
+  <p-card header="Datos del cliente" [style]="{'width': '65%', 'margin-top': '3em',  'margin-left': 'auto',
+  'margin-right': 'auto'}">
+    <div class="card">
+      <div class="div-1">
+        <div>
+          <h4>Nombre</h4>
+          <span>Identificacion</span>
+          <p>Direccion</p>
+          <p>Telefono</p>
+        </div>
+        <div>
+          <p>Tipo de vehiculo</p>
+          <p>Marca de vehiculo</p>
+          <p>Placa</p>
+        </div>
+      </div>
+      <div class="div-2">
+        <h4>Trabajos realizados</h4>
+    <p-button (click)="showBasicDialog2()" icon="pi pi-car" label="Nuevo trabajo"></p-button>
+    <p-dialog header="Ingresa los datos del trabajo realizado" [(visible)]="displayBasic2" [style]="{width: '50vw'}" [baseZIndex]="10000">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur dolor sapiente tempora quasi eius explicabo quaerat voluptates quis ea dolorum esse, modi at mollitia in ad voluptatem, enim, itaque voluptatum.
+            </p>
+      <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="displayBasic2=false" label="Guardar" class="p-button-text"></p-button>
+          <p-button icon="pi pi-times" (click)="displayBasic2=false" label="Cancelar"></p-button>
+      </ng-template>
+  </p-dialog>
+  </div>
+</div>
+
+</p-card>
