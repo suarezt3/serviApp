@@ -50,6 +50,7 @@ export class FormComponent implements OnInit  {
   }
 
   save() {
+   //console.log("NUMERO", this.myForm.controls['numberDocument'].value );
     let dataForm: {}
     dataForm = this.myForm.value
     if(this.myForm.invalid) {

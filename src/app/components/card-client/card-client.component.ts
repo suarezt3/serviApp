@@ -24,8 +24,7 @@ export class CardClientComponent implements OnInit {
     .pipe(
      switchMap( ({ id }) =>  this.clienteService.getClientDocument(id) ))
     .subscribe( (client) => {
-     console.log("CLIENTE", client);
-       this.client = client
+       this.client = client;
     } );
   }
 

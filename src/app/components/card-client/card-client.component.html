@@ -1,27 +1,50 @@
 
-
-  <p-card header="Datos del cliente" [style]="{'width': '65%', 'margin-top': '3em',  'margin-left': 'auto',
-  'margin-right': 'auto'}">
+  <h3>Datos del cliente</h3>
+  <div class="card-content" header="Datos del cliente">
     <div class="card">
       <div class="div-1">
         <div>
-          <h4>{{client[0]?.name}}</h4>
-          <span>{{client[0]?.documentType}} - {{client[0]?.numberDocument}}</span>
-          <p>{{client[0]?.address}}</p>
-          <p> Contacto {{client[0]?.phone}}</p>
+          <h5>{{client[0]?.name}}</h5>
+          <h5>{{client[0]?.documentType}} - {{client[0]?.numberDocument}}</h5>
         </div>
         <div>
-          <p>{{client[0]?.vehicleBrand}}</p>
-          <p>{{client[0]?.vehicle}}</p>
-          <p>Placa {{client[0]?.plate}}</p>
+          <h5> Direccion: {{client[0]?.address}}</h5>
+          <h5> Contacto: {{client[0]?.phone}}</h5>
+        </div>
+        <div>
+          <h5>{{client[0]?.vehicleBrand}}</h5>
+          <h5>{{client[0]?.vehicle}}</h5>
+          <h5>Placa: {{client[0]?.plate | uppercase}}</h5>
         </div>
       </div>
       <div class="div-2">
         <h4>Trabajos realizados</h4>
     <p-button (click)="showBasicDialog2()" icon="pi pi-car" label="Nuevo trabajo"></p-button>
     <p-dialog header="Ingresa los datos del trabajo realizado" [(visible)]="displayBasic2" [style]="{width: '50vw'}" [baseZIndex]="10000">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur dolor sapiente tempora quasi eius explicabo quaerat voluptates quis ea dolorum esse, modi at mollitia in ad voluptatem, enim, itaque voluptatum.
-            </p>
+
+      <form class="form-content">
+        <div class="form">
+          <label for="date">Fecha</label>
+          <div>
+            <input id="date" type="date">
+          </div>
+          <label for="order">Nº de orden</label>
+          <div>
+            <input id="order" type="number">
+          </div>
+          <label for="price">Valor</label>
+          <div>
+            <input id="price" type="number">
+          </div>
+        </div>
+        <div>
+          <label for="description">Describa el trabajo realizado</label>
+          <div>
+            <textarea name="" id="description" cols="30" rows="10"></textarea>
+          </div>
+        </div>
+      </form>
+
       <ng-template pTemplate="footer">
           <p-button icon="pi pi-check" (click)="displayBasic2=false" label="Guardar" class="p-button-text"></p-button>
           <p-button icon="pi pi-times" (click)="displayBasic2=false" label="Cancelar"></p-button>
@@ -30,4 +53,4 @@
   </div>
 </div>
 
-</p-card>
+</div>

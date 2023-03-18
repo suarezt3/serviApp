@@ -14,13 +14,15 @@ import { CardClientComponent } from './card-client/card-client.component';
 
 
 
+
 @NgModule({
   declarations: [
     TableComponent,
     LoginComponent,
     RegisterComponent,
     FormComponent,
-    CardClientComponent
+    CardClientComponent,
+
   ],
   exports: [
     BrowserAnimationsModule,
