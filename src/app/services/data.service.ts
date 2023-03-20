@@ -9,8 +9,9 @@ import { environment } from '../../environments/environment';
 })
 export class DataService {
 
- private url: string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients";
+ private url      : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients";
  private urlClient: string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?numberDocument=eq."
+ private urlJobs  : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs"
 
   constructor(private http: HttpClient) {}
 
@@ -54,6 +55,22 @@ getClientDocument(id: string): Observable<Client> {
         'Content-Type' : 'application/json',
        })
        return this.http.post<any>(this.url, body, {headers})
+    }
+
+
+    /**
+     *
+     * @param body Crear un nuevo trabajo
+     * @returns
+     */
+    //!Pendiente implementar este servicio
+    createJobs(body: {}): Observable<any> {
+      let headers = new HttpHeaders({
+        'apikey'       : environment.supabaseKey,
+        'Authorization': environment.authorization,
+        'Content-Type' : 'application/json',
+       })
+       return this.http.post<any>(this.urlJobs, body, {headers})
     }
 
 

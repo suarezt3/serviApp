@@ -19,34 +19,34 @@
       </div>
       <div class="div-2">
         <h4>Trabajos realizados</h4>
-    <p-button (click)="showBasicDialog2()" icon="pi pi-car" label="Nuevo trabajo"></p-button>
+    <p-button (click)="showBasicDialog()" icon="pi pi-car" label="Nuevo trabajo"></p-button>
     <p-dialog header="Ingresa los datos del trabajo realizado" [(visible)]="displayBasic2" [style]="{width: '50vw'}" [baseZIndex]="10000">
 
-      <form class="form-content">
+      <form class="form-content" [formGroup]="myForm" (ngSubmit)="submit()">
         <div class="form">
           <label for="date">Fecha</label>
           <div>
-            <input id="date" type="date">
+            <input formControlName="date" id="date" type="date">
           </div>
           <label for="order">Nº de orden</label>
           <div>
-            <input id="order" type="number">
+            <input formControlName="numberOrder" id="order" type="number">
           </div>
           <label for="price">Valor</label>
           <div>
-            <input id="price" type="number">
+            <input formControlName="price" id="price" type="number">
           </div>
         </div>
         <div>
           <label for="description">Describa el trabajo realizado</label>
           <div>
-            <textarea name="" id="description" cols="30" rows="10"></textarea>
+            <textarea formControlName="description" name="" id="description" cols="30" rows="10"></textarea>
           </div>
         </div>
       </form>
 
       <ng-template pTemplate="footer">
-          <p-button icon="pi pi-check" (click)="displayBasic2=false" label="Guardar" class="p-button-text"></p-button>
+          <p-button (click)="submit()" icon="pi pi-check" (click)="displayBasic2=false" label="Guardar" class="p-button-text"></p-button>
           <p-button icon="pi pi-times" (click)="displayBasic2=false" label="Cancelar"></p-button>
       </ng-template>
   </p-dialog>

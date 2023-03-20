@@ -16,7 +16,7 @@ export class FormComponent implements OnInit  {
 
   public brands: any = []
 
-  myForm!: FormGroup;
+ public myForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService) {}
 
