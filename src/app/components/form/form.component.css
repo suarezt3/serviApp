@@ -23,22 +23,11 @@
   text-align: center;
 }
 
-.error {
-  color: rgb(245, 12, 12);
-  font-size: small;
-}
-
 .plate {
   text-transform: uppercase;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
-input[type=number] { -moz-appearance:textfield; }
 
 select {
   background-color: #17212F;

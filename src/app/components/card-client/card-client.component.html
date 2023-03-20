@@ -1,4 +1,4 @@
-
+<p-toast></p-toast>
   <h3>Datos del cliente</h3>
   <div class="card-content" header="Datos del cliente">
     <div class="card">
@@ -19,35 +19,56 @@
       </div>
       <div class="div-2">
         <h4>Trabajos realizados</h4>
-    <p-button (click)="showBasicDialog()" icon="pi pi-car" label="Nuevo trabajo"></p-button>
-    <p-dialog header="Ingresa los datos del trabajo realizado" [(visible)]="displayBasic2" [style]="{width: '50vw'}" [baseZIndex]="10000">
+        <p-button (click)="showBasicDialog()" icon="pi pi-car" label="Nuevo trabajo"></p-button>
+        <p-dialog class="dialog" header="Ingresa los datos del trabajo realizado" [(visible)]="displayBasic2" [baseZIndex]="10000">
 
-      <form class="form-content" [formGroup]="myForm" (ngSubmit)="submit()">
-        <div class="form">
-          <label for="date">Fecha</label>
-          <div>
-            <input formControlName="date" id="date" type="date">
+       <form class="form-content" [formGroup]="myForm" (ngSubmit)="submit()">
+        <div class=" p-fluid p-grid p-formgrid">
+          <div class="p-field p-col-12 p-md-4 input">
+            <label for="date">Fecha</label>
+            <p-calendar
+            formControlName="date"
+            [(ngModel)]="date"
+            dateFormat="dd/mm/yy"
+            inputId="spanish"
+            [showIcon]="true"
+            inputId="icon"
+            >
+          </p-calendar>
+          <!-- <p-calendar [(ngModel)]="date" [touchUI]="true" [readonlyInput]="true" inputId="touchui"></p-calendar> -->
+          <div class="error" *ngIf="invalidField('date')" >
+            <span  *ngIf="myForm.controls?.['date']?.errors?.['required']" > Campo Obligatorio </span>
+          </div>
           </div>
           <label for="order">Nº de orden</label>
-          <div>
-            <input formControlName="numberOrder" id="order" type="number">
+          <div class="p-field input">
+            <input pInputText  id="order" type="number" formControlName="numberOrder">
+            <div class="error" *ngIf="invalidField('numberOrder')" >
+              <span  *ngIf="myForm.controls?.['numberOrder']?.errors?.['required']" > Campo Obligatorio </span>
+            </div>
           </div>
           <label for="price">Valor</label>
-          <div>
-            <input formControlName="price" id="price" type="number">
+          <div class="p-field input">
+            <input pInputText id="price" type="number" formControlName="price">
+            <div class="error" *ngIf="invalidField('price')" >
+              <span  *ngIf="myForm.controls?.['price']?.errors?.['required']" > Campo Obligatorio </span>
+            </div>
           </div>
         </div>
         <div>
           <label for="description">Describa el trabajo realizado</label>
-          <div>
-            <textarea formControlName="description" name="" id="description" cols="30" rows="10"></textarea>
+          <div class="input">
+            <textarea formControlName="description" rows="5" cols="50" pInputTextarea></textarea>
+            <div class="error" *ngIf="invalidField('description')" >
+              <span  *ngIf="myForm.controls?.['description']?.errors?.['required']" > Campo Obligatorio </span>
+            </div>
           </div>
         </div>
       </form>
 
       <ng-template pTemplate="footer">
           <p-button (click)="submit()" icon="pi pi-check" (click)="displayBasic2=false" label="Guardar" class="p-button-text"></p-button>
-          <p-button icon="pi pi-times" (click)="displayBasic2=false" label="Cancelar"></p-button>
+          <p-button (click)="cancel()" icon="pi pi-times" (click)="displayBasic2=false" label="Cancelar"></p-button>
       </ng-template>
   </p-dialog>
   </div>
