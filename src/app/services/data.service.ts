@@ -9,9 +9,11 @@ import { environment } from '../../environments/environment';
 })
 export class DataService {
 
- private url      : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients";
- private urlClient: string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?numberDocument=eq."
- private urlJobs  : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs"
+ private url      : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients"; //URL para traer todos los clientes
+ private urlClient: string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?numberDocument=eq."; //URL para buscar por cliente unico
+ private urlJobs  : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs"; //URL para los trabajos
+ private urlJobsClients  : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs?user=eq."; //URL para los trabajos de cada cliente
+
 
   constructor(private http: HttpClient) {}
 
@@ -63,7 +65,6 @@ getClientDocument(id: string): Observable<Client> {
      * @param body Crear un nuevo trabajo
      * @returns
      */
-    //!Pendiente implementar este servicio
     createJobs(body: {}): Observable<any> {
       let headers = new HttpHeaders({
         'apikey'       : environment.supabaseKey,
@@ -72,6 +73,21 @@ getClientDocument(id: string): Observable<Client> {
        })
        return this.http.post<any>(this.urlJobs, body, {headers})
     }
+
+
+    /**
+ *
+ * @param id Para obtener datos de cada trabajo de un cliente
+ * @returns
+ */
+getJobsClients(id: string): Observable<Client> {
+  let headers = new HttpHeaders({
+    'apikey'       : environment.supabaseKey,
+    'Authorization': environment.authorization,
+  })
+
+   return this.http.get<Client>(`${this.urlJobsClients}${id}`, {headers}).pipe()
+}
 
 
 getBrandVehicles() {

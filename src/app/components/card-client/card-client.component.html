@@ -1,5 +1,5 @@
 <p-toast></p-toast>
-  <h3>Datos del cliente</h3>
+  <h2 class="title">Datos del cliente</h2>
   <div class="card-content" header="Datos del cliente">
     <div class="card">
       <div class="div-1">
@@ -16,10 +16,10 @@
           <h5>{{client[0]?.vehicle}}</h5>
           <h5>Placa: {{client[0]?.plate | uppercase}}</h5>
         </div>
-      </div>
-      <div class="div-2">
+       </div>
+       <div class="div-2">
         <h4>Trabajos realizados</h4>
-        <p-button (click)="showBasicDialog()" icon="pi pi-car" label="Nuevo trabajo"></p-button>
+        <button class="btn" pButton (click)="showBasicDialog()" icon="pi pi-car" label="Nuevo trabajo"></button>
         <p-dialog class="dialog" header="Ingresa los datos del trabajo realizado" [(visible)]="displayBasic2" [baseZIndex]="10000">
 
        <form class="form-content" [formGroup]="myForm" (ngSubmit)="submit()">
@@ -71,7 +71,27 @@
           <p-button (click)="cancel()" icon="pi pi-times" (click)="displayBasic2=false" label="Cancelar"></p-button>
       </ng-template>
   </p-dialog>
-  </div>
+
+</div>
+<p-accordion>
+  <p-accordionTab *ngFor="let item of jobs"  [header]="item.date">
+    <div>
+      <h3>Orden:</h3>
+      <span>{{item.numberOrder}}</span>
+    </div>
+    <div>
+      <h3>Precio:</h3>
+      <span>{{item.price}}</span>
+    </div>
+    <div>
+      <h3>Trabajo realizado:</h3>
+      <span>{{item.description}}</span>
+    </div>
+  </p-accordionTab>
+</p-accordion>
+<ng-template  #notJobs>
+  <h5 class="alert">Este cliente aun no tiene trabajos</h5>
+</ng-template>
 </div>
 
 </div>

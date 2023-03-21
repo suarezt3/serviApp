@@ -10,7 +10,7 @@
   border-radius: 4px;
 }
 
-h3 {
+.title {
   text-align: center;
 }
 
@@ -38,6 +38,14 @@ h3 {
   margin-bottom: 20px;
 }
 
+.btn {
+  margin-bottom: 20px;
+}
+
+.alert {
+  color: rgb(230, 66, 66);
+  margin-left: 6%
+}
 
 
 /*Media Queris*/

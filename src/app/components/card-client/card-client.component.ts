@@ -16,13 +16,14 @@ import { Client } from 'src/interfaces/clients.interface';
 })
 export class CardClientComponent implements OnInit {
 
-  public client!: any | undefined;
+  public client!       : any | undefined;
+  public jobs!         : any | undefined;
   public id = "";
-  public myForm!: FormGroup;
+  public myForm!       : FormGroup;
   public displayBasic2!: boolean;
-  public date!: Date;
-  public es: any;
-  public invalidDates!: Array<Date>
+  public date!         : Date;
+  public es            : any;
+  public invalidDates! : Array<Date>
 
 
 
@@ -42,7 +43,18 @@ export class CardClientComponent implements OnInit {
      switchMap( ({ id }) =>  this.clienteService.getClientDocument(id) ))
     .subscribe( (client) => {
        this.client = client;
-    } );
+    });
+
+
+    /**
+     * Metodo para obtener los trabajos de cada cliente
+     */
+    this.activatedRoute.params
+    .pipe(
+     switchMap( ({ id }) =>  this.clienteService.getJobsClients(id) ))
+    .subscribe( (jobs) => {
+       this.jobs = jobs;
+    });
 
 
     /**

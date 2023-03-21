@@ -1,6 +1,5 @@
 .form {
-  border: 1px solid #81C784;
-  background-color: var(--surface-d);
+  background-color: var(--surface-a);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -27,7 +26,9 @@
   text-transform: uppercase;
 }
 
-
+.btn {
+  background-color: #6ABD6E;
+}
 
 select {
   background-color: #17212F;

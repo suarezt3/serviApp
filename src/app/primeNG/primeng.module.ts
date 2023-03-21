@@ -14,6 +14,7 @@ import {CardModule} from 'primeng/card';
 import {DialogModule} from 'primeng/dialog';
 import {CalendarModule} from 'primeng/calendar';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {AccordionModule} from 'primeng/accordion';
 
 
 
@@ -34,7 +35,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     CardModule,
     DialogModule,
     CalendarModule,
-    InputTextareaModule
+    InputTextareaModule,
+    AccordionModule
   ],
   exports: [
     ToolbarModule,
@@ -48,7 +50,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     CardModule,
     DialogModule,
     CalendarModule,
-    InputTextareaModule
+    InputTextareaModule,
+    AccordionModule
   ]
 })
 export class PrimengModule { }
