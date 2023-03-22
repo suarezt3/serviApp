@@ -16,7 +16,7 @@ import { Client } from 'src/interfaces/clients.interface';
 })
 export class CardClientComponent implements OnInit {
 
-  public client!       : any | undefined;
+  public client        : any = [] || undefined;
   public jobs!         : any | undefined;
   public id = "";
   public myForm!       : FormGroup;

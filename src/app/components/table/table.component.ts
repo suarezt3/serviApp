@@ -5,14 +5,16 @@ import { DataService } from 'src/app/services/data.service';
 import { Client } from 'src/interfaces/clients.interface';
 
 
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
+  providers: [MessageService]
 })
 export class TableComponent implements OnInit {
 
-  public data!: Client[];
+  public data: Client[] = [] || undefined;
   first = 0;
   rows = 10;
 
