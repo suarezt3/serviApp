@@ -26,9 +26,6 @@
   text-transform: uppercase;
 }
 
-select {
-  background-color: #17212F;
-}
 
 
 @media only screen and (max-width: 470px) {

@@ -21,11 +21,11 @@
     </div>
     <label>Tipo de Documento</label>
     <div class="field col">
-      <!-- <select  class="input" formControlName="documentType">
+      <select  class="input" formControlName="documentType">
         <option value="CC">Cedula de ciudadania</option>
         <option value="NIT">NIT</option>
-      </select> -->
-      <p-dropdown [options]="cities" formControlName="documentType" optionLabel="name"></p-dropdown>
+      </select>
+      <!-- <p-dropdown [options]="cities?.name" formControlName="documentType" optionLabel="name"></p-dropdown> -->
       <div class="error" *ngIf="invalidField('documentType')" >
         <span  *ngIf="myForm.controls?.['documentType']?.errors?.['required']" > Campo Obligatorio </span>
       </div>
@@ -81,10 +81,10 @@
 
     <label for="vehicleBrand">Marca del vehiculo</label>
     <div class="field col">
-      <!-- <select class="input" formControlName="vehicleBrand" >
+      <select class="input" formControlName="vehicleBrand" >
         <option *ngFor="let item of brands.data"  [value]="item.brand">{{item.brand}}</option>
-      </select> -->
-      <p-dropdown [options]="brands.data" formControlName="vehicleBrand" optionLabel="brand"></p-dropdown>
+      </select>
+      <!-- <p-dropdown [options]="brands?.data?.brand" formControlName="vehicleBrand" optionLabel="brand"></p-dropdown> -->
       <div class="error" *ngIf="invalidField('vehicleBrand')" >
         <span  *ngIf="myForm.controls?.['vehicleBrand']?.errors?.['required']" > Campo Obligatorio </span>
       </div>
