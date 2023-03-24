@@ -14,9 +14,10 @@ import { __values } from 'tslib';
 })
 export class FormComponent implements OnInit  {
 
-  public brands: any = []
+  public brands: any = [];
+  cities!: any[];
+  public myForm!: FormGroup;
 
- public myForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService) {}
 
@@ -36,6 +37,14 @@ export class FormComponent implements OnInit  {
       vehicleBrand   : ['', [Validators.required]],
       plate          : ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]]
     })
+
+    this.cities = [
+      { name: 'Cedula', code: 'CC' },
+      { name: 'NIT', code: 'NIT' },
+
+  ];
+
+
 
   }
 

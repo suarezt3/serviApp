@@ -1,5 +1,5 @@
 .form {
-  background-color: var(--surface-a);
+  background-color: var(--primary-color);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -24,10 +24,6 @@
 
 .plate {
   text-transform: uppercase;
-}
-
-.btn {
-  background-color: #6ABD6E;
 }
 
 select {

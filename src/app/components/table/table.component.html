@@ -1,15 +1,5 @@
 
-
-
-<!-- <ul *ngFor="let item of data">
-  <li>{{item.name}}</li>
-  <li>{{item.phone}}</li>
-  <li>{{item.vehicleBrand}}</li>
-  <li>{{item.vehicle}}</li>
-
-</ul> -->
-
-<div class="mb-3 body-table">
+<!-- <div class="mb-3 body-table">
   <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
   <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
   <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
@@ -46,6 +36,70 @@ currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} clientes
           </td>
       </tr>
   </ng-template>
-</p-table>
+</p-table> -->
 
 
+<div class="card">
+  <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
+  <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
+  <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
+  <p-table
+      styleClass="p-datatable-striped"
+      [value]="data"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      [(first)]="first"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [tableStyle]="{ 'min-width': '75rem' }"
+      >
+      <ng-template pTemplate="header">
+          <tr>
+            <th class="header">Nombre</th>
+            <th class="header">Documento</th>
+            <th class="header">Marca del vehiculo</th>
+            <th class="header">Vehiculo</th>
+            <th class="header">Placa</th>
+            <th class="header">Acciones</th>
+          </tr>
+          <tr>
+              <th>
+                  <p-columnFilter type="text" field="name" [matchModeOptions]="matchModeOptions"></p-columnFilter>
+              </th>
+              <th>
+                  <p-columnFilter type="text" field="numberDocument" [matchModeOptions]="matchModeOptions"></p-columnFilter>
+              </th>
+              <th>
+                  <p-columnFilter field="vehicleBrand" [matchModeOptions]="matchModeOptions"></p-columnFilter>
+              </th>
+              <th>
+                  <p-columnFilter field="vehicle" [matchModeOptions]="matchModeOptions"></p-columnFilter>
+              </th>
+              <th>
+                  <p-columnFilter field="plate" [matchModeOptions]="matchModeOptions"></p-columnFilter>
+              </th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data>
+          <tr>
+            <td>{{data.name}}</td>
+            <td>{{data.numberDocument}}</td>
+            <td>{{data.vehicleBrand}}</td>
+            <td>{{data.vehicle}}</td>
+            <td>{{data.plate | uppercase}}</td>
+            <td>
+              <button [routerLink]="[data?.numberDocument || undefined]" pButton pRipple type="button" label="Ver mas" class="p-button-info btn"></button>
+              <button pButton pRipple type="button" label="Editar" class="p-button-danger btn"></button>
+            </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+          <tr>
+              <td colspan="5">No customers found.</td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>

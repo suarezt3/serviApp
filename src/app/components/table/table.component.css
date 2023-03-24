@@ -2,7 +2,11 @@
   margin-right: 5px;
 }
 
-th {
-  font-size: 1.3rem;
-}
+/* :host ::ng-deep td {
+  text-align: center;
+  color: yellowgreen;
+} */
 
+:host ::ng-deep .header {
+  font-size: 1.5rem;
+}

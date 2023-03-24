@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { FilterMatchMode, MessageService, SelectItem } from 'primeng/api';
 import { DataService } from 'src/app/services/data.service';
 import { Client } from 'src/interfaces/clients.interface';
 
@@ -17,7 +17,7 @@ export class TableComponent implements OnInit {
   public data: Client[] = [] || undefined;
   first = 0;
   rows = 10;
-
+  matchModeOptions!: SelectItem[];
 
   constructor(private clienteService: DataService) { }
 
@@ -26,6 +26,13 @@ export class TableComponent implements OnInit {
     this.clienteService.getClientes().subscribe((resp) => {
       this.data = resp
     });
+
+
+    this.matchModeOptions = [
+      { label: 'Comienza con', value: FilterMatchMode.STARTS_WITH },
+      { label: 'Contiene', value: FilterMatchMode.CONTAINS },
+    ];
+
 
   }
 
