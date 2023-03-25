@@ -15,8 +15,9 @@ import { __values } from 'tslib';
 export class FormComponent implements OnInit  {
 
   public brands: any = [];
-  cities!: any;
+  // cities!: any;
   public myForm!: FormGroup;
+  public plate: string = ''
 
 
   constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService) {}
@@ -35,17 +36,14 @@ export class FormComponent implements OnInit  {
       phone          : ['', [Validators.required]],
       vehicle        : ['', [Validators.required, Validators.maxLength(20)]],
       vehicleBrand   : ['', [Validators.required]],
-      plate          : ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]]
+      plate          : [''.toUpperCase(), [Validators.required, Validators.minLength(6), Validators.maxLength(6)]]
     })
 
-    this.cities = [
-      { name: 'Cedula', code: 'CC' },
-      { name: 'NIT', code: 'NIT' },
+  //   this.cities = [
+  //     { name: 'Cedula', code: 'CC' },
+  //     { name: 'NIT', code: 'NIT' },
 
-  ];
-
-
-
+  // ];
   }
 
   /**
@@ -59,17 +57,32 @@ export class FormComponent implements OnInit  {
   }
 
   save() {
+    let placa: string = this.myForm.get('plate')?.value.toUpperCase()
+    this.dataService.getPlate(placa).subscribe((resp) => {
+      this.plate = resp[0]?.plate
+    });
 
-   console.log("FORM", this.myForm.value );
-    let dataForm: {}
-    dataForm = this.myForm.value
-    if(this.myForm.invalid) {
+     const form = [{
+       name             : this.myForm.get('name')?.value,
+       documentType     : this.myForm.get('documentType')?.value,
+       numberDocument   : this.myForm.get('numberDocument')?.value,
+       address          : this.myForm.get('address')?.value,
+       phone            : this.myForm.get('phone')?.value,
+       vehicle          : this.myForm.get('vehicle')?.value,
+       vehicleBrand     : this.myForm.get('vehicleBrand')?.value,
+       plate            : this.myForm.get('plate')?.value.toUpperCase()
+     }];
+
+    if(placa.toUpperCase() == this.plate.toUpperCase()) {
+      this.messageService.add({severity: 'error', summary: 'Error', detail: `La placa ${this.plate} ya esta en base de datos!`})
+    }else if(this.myForm.invalid) {
       this.myForm.markAllAsTouched();
-    }else {
-      this.dataService.createClient(dataForm).subscribe()
+      } else {
+        this.dataService.createClient(form).subscribe()
       this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Cliente creado satisfactoriamente'});
       this.myForm.reset()
-    }
+      }
+
 
   }
 

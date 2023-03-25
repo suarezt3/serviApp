@@ -13,6 +13,7 @@ export class DataService {
  private urlClient: string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?numberDocument=eq."; //URL para buscar por cliente unico
  private urlJobs  : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs"; //URL para los trabajos
  private urlJobsClients  : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs?user=eq."; //URL para los trabajos de cada cliente
+ private urlPlate : string =        "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?plate=eq.";
 
 
   constructor(private http: HttpClient) {}
@@ -88,6 +89,22 @@ getJobsClients(id: string): Observable<Client> {
 
    return this.http.get<Client>(`${this.urlJobsClients}${id}`, {headers}).pipe()
 }
+
+
+/**
+ *
+ * @param plate Para obtener la placa de cada vehiculo
+ * @returns
+ */
+getPlate(plate: string): Observable<any> {
+  let headers = new HttpHeaders({
+    'apikey'       : environment.supabaseKey,
+    'Authorization': environment.authorization,
+  })
+
+   return this.http.get<any>(`${this.urlPlate}${plate}`, {headers}).pipe()
+}
+
 
 
 getBrandVehicles() {
