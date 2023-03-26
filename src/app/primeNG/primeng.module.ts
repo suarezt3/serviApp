@@ -15,6 +15,7 @@ import {DialogModule} from 'primeng/dialog';
 import {CalendarModule} from 'primeng/calendar';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {AccordionModule} from 'primeng/accordion';
+import { ChartModule } from 'primeng/chart';
 
 
 
@@ -36,7 +37,8 @@ import {AccordionModule} from 'primeng/accordion';
     DialogModule,
     CalendarModule,
     InputTextareaModule,
-    AccordionModule
+    AccordionModule,
+    ChartModule
   ],
   exports: [
     ToolbarModule,
@@ -51,7 +53,8 @@ import {AccordionModule} from 'primeng/accordion';
     DialogModule,
     CalendarModule,
     InputTextareaModule,
-    AccordionModule
+    AccordionModule,
+    ChartModule
   ]
 })
 export class PrimengModule { }

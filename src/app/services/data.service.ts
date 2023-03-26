@@ -9,11 +9,12 @@ import { environment } from '../../environments/environment';
 })
 export class DataService {
 
- private url      : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients"; //URL para traer todos los clientes
- private urlClient: string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?numberDocument=eq."; //URL para buscar por cliente unico
- private urlJobs  : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs"; //URL para los trabajos
+ private url             : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients"; //URL para traer todos los clientes
+ private urlClient       : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?numberDocument=eq."; //URL para buscar por cliente unico
+ private urlJobs         : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs"; //URL para los trabajos
  private urlJobsClients  : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs?user=eq."; //URL para los trabajos de cada cliente
- private urlPlate : string =        "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?plate=eq.";
+ private urlPlate        : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?plate=eq.";//URl para consultar la placa de los clientes
+ private urlBrands       : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?select=vehicleBrand"; //URL para consultar las las marcas de vehiculos
 
 
   constructor(private http: HttpClient) {}
@@ -101,8 +102,16 @@ getPlate(plate: string): Observable<any> {
     'apikey'       : environment.supabaseKey,
     'Authorization': environment.authorization,
   })
-
    return this.http.get<any>(`${this.urlPlate}${plate}`, {headers}).pipe()
+};
+
+
+getBrands() {
+  let headers = new HttpHeaders({
+    'apikey'       : environment.supabaseKey,
+    'Authorization': environment.authorization
+  })
+   return this.http.get<any>(this.urlBrands, {headers}).pipe()
 }
 
 

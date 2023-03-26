@@ -75,6 +75,7 @@ export class FormComponent implements OnInit  {
 
     if(placa.toUpperCase() == this.plate.toUpperCase()) {
       this.messageService.add({severity: 'error', summary: 'Error', detail: `La placa ${this.plate} ya esta en base de datos!`})
+      this.myForm.get('plate')?.reset()
     }else if(this.myForm.invalid) {
       this.myForm.markAllAsTouched();
       } else {

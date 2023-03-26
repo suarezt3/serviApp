@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CardClientComponent } from './components/card-client/card-client.component';
+import { ChartComponent } from './components/chart/chart.component';
 import { FormComponent } from './components/form/form.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'formulario', component: FormComponent },
   { path: 'tabla', component: TableComponent },
+  { path: 'graficas', component: ChartComponent },
   { path: ':id', component: CardClientComponent },
   { path: '**', component: TableComponent }
 

@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { PrimengModule } from '../primeNG/primeng.module';
 import { FormComponent } from './form/form.component';
 import { CardClientComponent } from './card-client/card-client.component';
+import { ChartComponent } from './chart/chart.component';
 
 
 
@@ -22,6 +23,7 @@ import { CardClientComponent } from './card-client/card-client.component';
     RegisterComponent,
     FormComponent,
     CardClientComponent,
+    ChartComponent,
 
   ],
   exports: [

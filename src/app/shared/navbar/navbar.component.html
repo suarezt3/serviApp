@@ -2,12 +2,14 @@
 <p-toolbar styleClass="mb-4 gap-2">
   <div class="p-toolbar-group-start">
       <p-button [routerLink]="['/formulario']" routerLinkActive="router-link-active"  class="btn" label="Nuevo registro" icon="pi pi-plus"></p-button>
-      <button
-      pButton
+      <p-button
       pRipple
-      icon="pi pi-trash"
+      icon="pi pi-chart-bar"
       class="p-button-danger"
-    ></button>
+      label="Estadisticas"
+      styleClass="p-button-warning"
+      [routerLink]="['/graficas']"
+    ></p-button>
   </div>
   <div class="p-toolbar-group-end">
       <button [routerLink]="['/']" pButton pRipple label="Tabla" icon="pi pi-align-justify" class="p-button-help btn"></button>
