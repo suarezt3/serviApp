@@ -102,6 +102,7 @@
               <span  *ngIf="myForm.controls?.['plate']?.errors?.['required']" > Campo Obligatorio </span>
               <span  *ngIf="myForm.controls?.['plate']?.errors?.['minlength']" > Minimo 6 caracteres </span>
               <span  *ngIf="myForm.controls?.['plate']?.errors?.['maxlength']" > Maximo 6 caracteres </span>
+              <span  *ngIf="myForm.controls?.['plate']?.errors?.['plateExist']" > Esta placa ya existe en la base de datos </span>
             </div>
     </div>
 
@@ -109,11 +110,4 @@
       <p-button (click)="save()" label="Guardar" styleClass="p-button-warning"></p-button>
     </div>
   </div>
-
-
-
-
-
-
 </div>
-
