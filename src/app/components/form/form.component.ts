@@ -4,6 +4,7 @@ import { DataService } from 'src/app/services/data.service';
 import {MessageService} from 'primeng/api';
 import { __values } from 'tslib';
 import { ValidatorServicesService } from 'src/app/services/validator-services.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -19,11 +20,14 @@ export class FormComponent implements OnInit  {
   // cities!: any;
   public myForm!: FormGroup;
   public plate: string = ''
+  public id: any;
 
 
-  constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService, private plateValidator: ValidatorServicesService) {}
+  constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService, private plateValidator: ValidatorServicesService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
+
+    this.activatedRoute.params.subscribe(({ id }) => this.id = id) // Tomar el ID del cliente
 
     this.dataService.getBrandVehicles().subscribe((resp) => {
       this.brands = resp
@@ -48,6 +52,8 @@ export class FormComponent implements OnInit  {
 
   // ];
   }
+
+
 
   /**
    *

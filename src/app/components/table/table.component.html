@@ -92,7 +92,7 @@ currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} clientes
             <td>{{data.plate | uppercase}}</td>
             <td>
               <button [routerLink]="[data?.numberDocument || undefined]" pButton pRipple type="button" label="Ver mas" class="p-button-info btn"></button>
-              <button pButton pRipple type="button" label="Editar" class="p-button-danger btn"></button>
+              <button [routerLink]="['/editar', data?.numberDocument]"  pButton pRipple type="button" label="Editar" class="p-button-danger btn"></button>
             </td>
           </tr>
       </ng-template>

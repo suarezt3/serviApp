@@ -17,6 +17,7 @@ export class DataService {
  private urlBrands       : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?select=vehicleBrand"; //URL para consultar las las marcas de vehiculos
 
 
+
   constructor(private http: HttpClient) {}
 
 /**
@@ -64,6 +65,21 @@ getClientDocument(id: string): Observable<Client> {
 
     /**
      *
+     * @param id Para editar los datos de un cliente
+     * @returns
+     */
+    editClientDocument(id: string): Observable<Client> {
+      let headers = new HttpHeaders({
+        'apikey'       : environment.supabaseKey,
+        'Authorization': environment.authorization,
+      })
+
+       return this.http.patch<Client>(`${this.urlClient}${id}`, {headers}).pipe()
+    }
+
+
+    /**
+     *
      * @param body Crear un nuevo trabajo
      * @returns
      */
@@ -88,7 +104,7 @@ getJobsClients(id: string): Observable<Client> {
     'Authorization': environment.authorization,
   })
 
-   return this.http.get<Client>(`${this.urlJobsClients}${id}`, {headers}).pipe()
+   return this.http.get<Client>(`${this.urlJobsClients}${id}`, {headers})
 }
 
 
@@ -115,9 +131,34 @@ getBrands() {
 }
 
 
-
+/**
+ *
+ * @returns Obtener las marcas de vehiculos
+ */
 getBrandVehicles() {
   return this.http.get<any>('../../assets/json/brands.json')
+}
+
+/**
+ *
+ * @returns Obtener los meses
+ */
+getMonths() {
+  return this.http.get<any>('../../assets/json/months.json')
+}
+/**
+ *
+ * @returns Obtener los dias
+ */
+getDays() {
+  return this.http.get<any>('../../assets/json/days.json')
+}
+/**
+ *
+ * @returns Obtener los años
+ */
+getYears() {
+  return this.http.get<any>('../../assets/json/years.json')
 }
 
 

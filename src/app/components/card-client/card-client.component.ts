@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { MessageService } from 'primeng/api';
 
-import { switchMap } from 'rxjs/operators';
+import { switchMap} from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 import { Client } from 'src/interfaces/clients.interface';
 
@@ -21,16 +21,32 @@ export class CardClientComponent implements OnInit {
   public id = "";
   public myForm!       : FormGroup;
   public displayBasic2!: boolean;
-  public date!         : Date;
-  public es            : any;
-  public invalidDates! : Array<Date>
+
+  public days: any = [];
+  public months: any = [];
+  public years: any = [];
 
 
 
-  constructor(private fb: FormBuilder, private clienteService: DataService, private activatedRoute: ActivatedRoute, private messageService: MessageService) {}
+  constructor(private fb: FormBuilder, private dataService: DataService, private activatedRoute: ActivatedRoute, private messageService: MessageService) {}
 
 
   ngOnInit(): void {
+
+
+    this.dataService.getDays().subscribe((day) => {
+         this.days = day
+       });
+    this.dataService.getMonths().subscribe((month) => {
+        this.months = month
+       });
+    this.dataService.getYears().subscribe((year) => {
+         this.years = year
+       });
+
+
+
+
     /**
      * Id del cliente
      */
@@ -40,50 +56,37 @@ export class CardClientComponent implements OnInit {
      */
     this.activatedRoute.params
     .pipe(
-     switchMap( ({ id }) =>  this.clienteService.getClientDocument(id) ))
+     switchMap( ({ id }) =>  this.dataService.getClientDocument(id) ))
     .subscribe( (client) => {
        this.client = client;
     });
 
 
-    /**
+   /**
      * Metodo para obtener los trabajos de cada cliente
      */
-    this.activatedRoute.params
-    .pipe(
-     switchMap( ({ id }) =>  this.clienteService.getJobsClients(id) ))
-    .subscribe( (jobs) => {
-       this.jobs = jobs;
-    });
+   this.activatedRoute.params
+   .pipe(
+    switchMap( ({ id }) =>  this.dataService.getJobsClients(id) ))
+   .subscribe( (jobs) => {
+      this.jobs = jobs;
+   });
 
 
     /**
      * Formulario para crear los trabajos del cliente
      */
     this.myForm = this.fb.group({
-      date: ['', [Validators.required]],
+      day: ['', [Validators.required]],
+      month: ['', [Validators.required]],
+      year: ['', [Validators.required]],
       price: ['', [Validators.required]],
       numberOrder: ['', [Validators.required]],
       description: ['', [Validators.required]],
       user: [this.id, [Validators.required]]
     })
 
-    this.es = {
-      firstDayOfWeek: 1,
-      dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
-      dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
-      dayNamesMin: [ "D","L","M","X","J","V","S" ],
-      monthNames: [ "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre" ],
-      monthNamesShort: [ "ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic" ],
-      today: 'Hoy',
-      clear: 'Borrar'
-  }
 
-
-  let today = new Date();
-  let invalidDate = new Date();
-  invalidDate.setDate(today.getDate() - 1);
-  this.invalidDates = [today,invalidDate];
 
   }
 
@@ -93,15 +96,16 @@ export class CardClientComponent implements OnInit {
   }
 
 
-  submit() {
+  submit(): void {
       let dataForm: {}
       dataForm = this.myForm.value
       if(this.myForm.invalid) {
         this.myForm.markAllAsTouched();
       }else {
-        this.clienteService.createJobs(dataForm).subscribe()
+        this.dataService.createJobs(dataForm).subscribe()
+        this.myForm.reset();
+        window.location.reload()
         this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Trabajo registrado con exito'});
-        this.myForm.reset()
       }
   }
 

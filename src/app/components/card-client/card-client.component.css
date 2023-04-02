@@ -18,6 +18,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  border-radius: 5px;
+  background-color: rgba(0, 101, 253, 0.158);
 }
 
 .div-1 {
@@ -38,6 +40,10 @@
   margin-bottom: 20px;
 }
 
+.container_dates {
+  margin-bottom: 40px;
+}
+
 .btn {
   margin-bottom: 20px;
 }
@@ -45,6 +51,19 @@
 .alert {
   color: rgb(230, 66, 66);
   margin-left: 6%
+}
+
+.dates {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  border-radius: 3px;
+  margin-right: 10px;
+  height: 35px;
+  width: 150px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 

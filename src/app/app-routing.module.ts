@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'registro', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'formulario', component: FormComponent },
+  { path: 'editar/:id', component: FormComponent },
   { path: 'tabla', component: TableComponent },
   { path: 'graficas', component: ChartComponent },
   { path: ':id', component: CardClientComponent },
