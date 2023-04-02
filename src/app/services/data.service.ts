@@ -10,11 +10,7 @@ import { environment } from '../../environments/environment';
 export class DataService {
 
  private url             : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients"; //URL para traer todos los clientes
- private urlClient       : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?numberDocument=eq."; //URL para buscar por cliente unico
  private urlJobs         : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs"; //URL para los trabajos
- private urlJobsClients  : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs?user=eq."; //URL para los trabajos de cada cliente
- private urlPlate        : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?plate=eq.";//URl para consultar la placa de los clientes
- private urlBrands       : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients?select=vehicleBrand"; //URL para consultar las las marcas de vehiculos
 
 
 
@@ -44,7 +40,7 @@ getClientDocument(id: string): Observable<Client> {
     'Authorization': environment.authorization,
   })
 
-   return this.http.get<Client>(`${this.urlClient}${id}`, {headers}).pipe()
+   return this.http.get<Client>(`${this.url}?numberDocument=eq.${id}`, {headers}).pipe()
 }
 
 
@@ -74,7 +70,7 @@ getClientDocument(id: string): Observable<Client> {
         'Authorization': environment.authorization,
       })
 
-       return this.http.patch<Client>(`${this.urlClient}${id}`, {headers}).pipe()
+       return this.http.patch<Client>(`${this.url}?numberDocument=eq.${id}`, {headers}).pipe()
     }
 
 
@@ -104,22 +100,11 @@ getJobsClients(id: string): Observable<Client> {
     'Authorization': environment.authorization,
   })
 
-   return this.http.get<Client>(`${this.urlJobsClients}${id}`, {headers})
+   return this.http.get<Client>(`${this.urlJobs}?user=eq.${id}`, {headers})
 }
 
 
-/**
- *
- * @param plate Para obtener la placa de cada vehiculo
- * @returns
- */
-getPlate(plate: string): Observable<any> {
-  let headers = new HttpHeaders({
-    'apikey'       : environment.supabaseKey,
-    'Authorization': environment.authorization,
-  })
-   return this.http.get<any>(`${this.urlPlate}${plate}`, {headers}).pipe()
-};
+
 
 
 getBrands() {
@@ -127,7 +112,7 @@ getBrands() {
     'apikey'       : environment.supabaseKey,
     'Authorization': environment.authorization
   })
-   return this.http.get<any>(this.urlBrands, {headers}).pipe()
+   return this.http.get<any>(`${this.url}?select=vehicleBrand`, {headers}).pipe()
 }
 
 
