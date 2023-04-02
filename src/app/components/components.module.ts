@@ -7,6 +7,8 @@ import { TableComponent } from './table/table.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 
 import { PrimengModule } from '../primeNG/primeng.module';
 import { FormComponent } from './form/form.component';
@@ -40,6 +42,7 @@ import { ChartComponent } from './chart/chart.component';
     FormsModule,
     ReactiveFormsModule,
     PrimengModule,
+    NgxChartsModule
   ]
 })
 export class ComponentsModule { }
