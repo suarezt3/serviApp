@@ -4,17 +4,17 @@
     <div class="card">
       <div class="div-1">
         <div>
-          <h5>{{client[0]?.name}}</h5>
-          <h5>{{client[0]?.documentType}} - {{client[0]?.numberDocument}}</h5>
+          <h5>{{client?.name}}</h5>
+          <h5>{{client?.documentType}} - {{client?.numberDocument}}</h5>
         </div>
         <div>
-          <h5> Direccion: {{client[0]?.address}}</h5>
-          <h5> Contacto: {{client[0]?.phone}}</h5>
+          <h5> Direccion: {{client?.address}}</h5>
+          <h5> Contacto: {{client?.phone}}</h5>
         </div>
         <div>
-          <h5>{{client[0]?.vehicleBrand}}</h5>
-          <h5>{{client[0]?.vehicle}}</h5>
-          <h5>Placa: {{client[0]?.plate | uppercase}}</h5>
+          <h5>{{client?.vehicleBrand}}</h5>
+          <h5>{{client?.vehicle}}</h5>
+          <h5>Placa: {{client?.plate | uppercase}}</h5>
         </div>
        </div>
        <div class="div-2">

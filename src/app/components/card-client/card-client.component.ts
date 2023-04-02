@@ -5,7 +5,6 @@ import { MessageService } from 'primeng/api';
 
 import { switchMap} from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
-import { Client } from 'src/interfaces/clients.interface';
 
 
 @Component({
@@ -21,6 +20,8 @@ export class CardClientComponent implements OnInit {
   public id = "";
   public myForm!       : FormGroup;
   public displayBasic2!: boolean;
+  public vehicle!: string | null;
+  public vehicleBrand!: string | null;
 
   public days: any = [];
   public months: any = [];
@@ -57,8 +58,10 @@ export class CardClientComponent implements OnInit {
     this.activatedRoute.params
     .pipe(
      switchMap( ({ id }) =>  this.dataService.getClientDocument(id) ))
-    .subscribe( (client) => {
-       this.client = client;
+    .subscribe( (client: any) => {
+       this.client = client[0];
+       this.vehicle = client[0]?.vehicle
+       this.vehicleBrand = client[0]?.vehicleBrand
     });
 
 
@@ -83,7 +86,9 @@ export class CardClientComponent implements OnInit {
       price: ['', [Validators.required]],
       numberOrder: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      user: [this.id, [Validators.required]]
+      user: [this.id, [Validators.required]],
+      vehicle: [],
+      vehicleBrand: []
     })
 
 
@@ -97,6 +102,8 @@ export class CardClientComponent implements OnInit {
 
 
   submit(): void {
+    this.myForm.get('vehicle')?.setValue(this.vehicle)
+    this.myForm.get('vehicleBrand')?.setValue(this.vehicleBrand)
       let dataForm: {}
       dataForm = this.myForm.value
       if(this.myForm.invalid) {
