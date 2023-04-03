@@ -49,15 +49,17 @@ export class ChartComponent implements OnInit {
 
     ngOnInit() {
 
-      console.log("SINGLE", this.single);
+
 
         this.dataService.getBrands().subscribe((brands) => {
           console.log("MARCAS", brands);
         })
 
-        this.chartService.getJobsClients('Ford Fiesta').subscribe((vehicle) => {
+        this.chartService.getJobsClients('Ford Fiesta').subscribe((vehicle: any) => {
           console.log("DATA", vehicle);
-          this.vehicle = vehicle
+          console.log("LENGHT", vehicle.length);
+
+          this.vehicle = vehicle.length
         })
 
 

@@ -23,7 +23,7 @@ export class FormComponent implements OnInit  {
   public id: any;
 
 
-  constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService, private plateValidator: ValidatorServicesService, private activatedRoute: ActivatedRoute) {}
+  constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService, private plateValidator: ValidatorServicesService, private activatedRoute: ActivatedRoute) {this.obtenerParametroUrl()}
 
   ngOnInit(): void {
 
@@ -31,28 +31,42 @@ export class FormComponent implements OnInit  {
 
     this.dataService.getBrandVehicles().subscribe((resp) => {
       this.brands = resp
+
     })
 
     this.myForm = this.fb.group({
-      name           : ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      name           : ['', [Validators.required,  Validators.maxLength(50)]],
       documentType   : ['', [Validators.required]],
       numberDocument : [  , [Validators.required]],
-      address        : ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      address        : ['', [Validators.required,  Validators.maxLength(50)]],
       phone          : ['', [Validators.required]],
       vehicle        : ['', [Validators.required, Validators.maxLength(20)]],
       vehicleBrand   : ['', [Validators.required]],
       plate          : [''.toUpperCase(), [Validators.required, Validators.minLength(6), Validators.maxLength(6)], [this.plateValidator ]]
     })
 
-
-
-  //   this.cities = [
-  //     { name: 'Cedula', code: 'CC' },
-  //     { name: 'NIT', code: 'NIT' },
-
-  // ];
   }
 
+
+  obtenerParametroUrl() {
+    this.activatedRoute.paramMap.subscribe((params: any) => {
+      this.id= params.get('id');
+      if (this.id) {
+        this.dataService.getClientDocument(this.id).subscribe((res: any) => {
+          console.log("RES", res);
+
+           this.myForm.patchValue({
+             name: res[0]?.name,
+             documentType: res[0]?.documentType,
+             phone: res[0]?.phone,
+             vehicle: res[0]?.vehicle,
+             numberDocument: res[0]?.numberDocument,
+             address: res[0]?.address
+           });
+        });
+      }
+    });
+  }
 
 
   /**
@@ -92,7 +106,5 @@ export class FormComponent implements OnInit  {
 
 
   }
-
-
 
 }
