@@ -98,10 +98,12 @@ export class FormComponent implements OnInit  {
 
     if(this.myForm.invalid) {
       this.myForm.markAllAsTouched();
-    }else {
+    }else if(!this.id) {
       this.dataService.createClient(form).subscribe()
       this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Cliente creado satisfactoriamente'});
       this.myForm.reset()
+      }else{
+        this.dataService.editClientDocument(this.id).subscribe()
       }
 
 
