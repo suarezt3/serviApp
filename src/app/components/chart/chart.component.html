@@ -1,16 +1,34 @@
-<ngx-charts-bar-horizontal
-  [view]="view"
-  scheme="cool"
-  [results]="single"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  (select)="onSelect($event)"
-  (activate)="onActivate($event)"
-  (deactivate)="onDeactivate($event)">
-</ngx-charts-bar-horizontal>
+<div>
+  <h1>Estadisticas</h1>
+</div>
+
+<form>
+
+  <div class="container-select">
+    <div>
+      <label for="year">Selecciona un año</label>
+      <div>
+        <select id="year" class="select" formControlName="year">
+          <option *ngFor="let item of years" [value]="item.year">{{item.year}}</option>
+        </select>
+      </div>
+    </div>
+    <div >
+      <label for="month">Selecciona un mes</label>
+      <div>
+        <select id="month" class="select" formControlName="month">
+          <option *ngFor="let item of months" [value]="item?.month">{{item?.month}}</option>
+       </select>
+      </div>
+    </div>
+    <div >
+      <label for="brand">Selecciona una marca</label>
+      <div>
+        <select id="month" class="select" formControlName="brand">
+          <option *ngFor="let item of brands" [value]="item?.brand">{{item?.brand}}</option>
+       </select>
+      </div>
+    </div>
+  </div>
+
+</form>

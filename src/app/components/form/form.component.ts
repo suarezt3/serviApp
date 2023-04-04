@@ -5,6 +5,7 @@ import {MessageService} from 'primeng/api';
 import { __values } from 'tslib';
 import { ValidatorServicesService } from 'src/app/services/validator-services.service';
 import { ActivatedRoute } from '@angular/router';
+import { BRANDS } from 'src/app/interfaces/brands.interface';
 
 
 
@@ -16,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormComponent implements OnInit  {
 
-  public brands: any = [];
+  public brands!: BRANDS[];
   // cities!: any;
   public myForm!: FormGroup;
   public plate: string = ''
@@ -29,9 +30,8 @@ export class FormComponent implements OnInit  {
 
     this.activatedRoute.params.subscribe(({ id }) => this.id = id) // Tomar el ID del cliente
 
-    this.dataService.getBrandVehicles().subscribe((resp) => {
+    this.dataService.getBrandVehicles().subscribe((resp: BRANDS[]) => {
       this.brands = resp
-
     })
 
     this.myForm = this.fb.group({

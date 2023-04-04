@@ -82,7 +82,7 @@
     <label for="vehicleBrand">Marca del vehiculo</label>
     <div class="field col">
       <select class="input" formControlName="vehicleBrand" >
-        <option *ngFor="let item of brands.data"  [value]="item.brand">{{item.brand}}</option>
+        <option *ngFor="let item of brands"  [value]="item.brand">{{item.brand}}</option>
       </select>
       <!-- <p-dropdown [options]="brands?.data?.brand" formControlName="vehicleBrand" optionLabel="brand"></p-dropdown> -->
       <div class="error" *ngIf="invalidField('vehicleBrand')" >
