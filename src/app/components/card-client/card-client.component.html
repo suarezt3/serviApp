@@ -44,7 +44,7 @@
               <div class="date">
                 <label for="">Mes</label>
                 <select class="date" formControlName="month" >
-                  <option *ngFor="let item of months?.data"  [value]="item?.month">{{item?.month}}</option>
+                  <option *ngFor="let item of months"  [value]="item?.month">{{item?.month}}</option>
                 </select>
                 <div class="error" *ngIf="invalidField('month')" >
                   <span  *ngIf="myForm.controls?.['month']?.errors?.['required']" > Campo Obligatorio </span>
@@ -53,7 +53,7 @@
               <div class="date">
                 <label for="">Dia</label>
                 <select class="date" formControlName="day" >
-                  <option *ngFor="let item of days?.data"  [value]="item?.day">{{item?.day}}</option>
+                  <option *ngFor="let item of days"  [value]="item?.day">{{item?.day}}</option>
                 </select>
                 <div class="error" *ngIf="invalidField('day')" >
                   <span  *ngIf="myForm.controls?.['day']?.errors?.['required']" > Campo Obligatorio </span>
@@ -62,7 +62,7 @@
               <div class="date">
                 <label for="">Año</label>
                 <select class="date" formControlName="year" >
-                  <option *ngFor="let item of years?.data"  [value]="item?.year">{{item?.year}}</option>
+                  <option *ngFor="let item of years"  [value]="item?.year">{{item?.year}}</option>
                 </select>
                 <div class="error" *ngIf="invalidField('year')" >
                   <span  *ngIf="myForm.controls?.['year']?.errors?.['required']" > Campo Obligatorio </span>

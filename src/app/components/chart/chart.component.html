@@ -2,7 +2,16 @@
   <h1>Estadisticas</h1>
 </div>
 
-<form>
+<div>
+  <p >{{year}}</p>
+  <p>{{month}}</p>
+  <p>{{brand}}</p>
+
+  <p>Datos: {{result}}</p>
+
+</div>
+
+<form [formGroup]="myForm" (ngSubmit)="submit()">
 
   <div class="container-select">
     <div>
@@ -25,10 +34,11 @@
       <label for="brand">Selecciona una marca</label>
       <div>
         <select id="month" class="select" formControlName="brand">
-          <option *ngFor="let item of brands" [value]="item?.brand">{{item?.brand}}</option>
+          <option *ngFor="let item of brands" [value]="item?.vehicleBrand">{{item?.vehicleBrand}}</option>
        </select>
       </div>
     </div>
   </div>
+  <div class="container_btn"><p-button class="btn" (click)="submit()" label="Enviar"></p-button></div>
 
 </form>

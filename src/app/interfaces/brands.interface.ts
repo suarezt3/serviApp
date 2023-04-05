@@ -1,4 +1,5 @@
 export interface BRANDS {
   id: number,
-  brand: string
+  brand: string,
+  vehicleBrand: string
 }

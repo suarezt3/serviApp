@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { BRANDS } from 'src/app/interfaces/brands.interface';
 import { DAY } from 'src/app/interfaces/day.interface';
 import { MONTH } from 'src/app/interfaces/month.interface';
@@ -13,52 +14,71 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ChartComponent implements OnInit {
 
-  public vehicle!: any;
+  public result!: number;
+
+  public year!: number;
+  public month!: string;
+  public brand!: string;
+
 
   public brands! : BRANDS[];
-  public days!   : DAY[];
   public months! : MONTH[];
   public years!  : YEAR[];
+  public myForm! : FormGroup
 
 
 
 
 
-
-  constructor(private dataService: DataService, private chartService: ChartsService){}
+  constructor(private fb: FormBuilder, private dataService: DataService, private chartService: ChartsService){}
 
 
 
     ngOnInit() {
 
-       this.dataService.getBrandVehicles().subscribe((resp: BRANDS[]) => {
-         this.brands = resp //!Cambiar para traer las marcas que estan en la DB y setear las marcas repetidas
-       })
+      this.myForm = this.fb.group({
+        year: [''],
+        month: [''],
+        brand: ['']
+      })
 
-      this.dataService.getDays().subscribe((day: DAY[]) => {
-        this.days = day
+
+      this.chartService.getMonths('month').subscribe((month: any) => {
+        const months = month.filter((item: any, index: any) => {
+          return index === month.findIndex((obj: any) => {
+            return JSON.stringify(obj) === JSON.stringify(item);
+          });
+        });
+        this.months = months
       });
-        this.dataService.getMonths().subscribe((month: MONTH[]) => {
-       this.months = month
+
+      this.chartService.getYears('year').subscribe((year: any) => {
+        const years = year.filter((item: any, index: any) => {
+          return index === year.findIndex((obj: any) => {
+            return JSON.stringify(obj) === JSON.stringify(item);
+          });
+        });
+        this.years = years
       });
-       this.dataService.getYears().subscribe((year: YEAR[]) => {
-        this.years = year
-      });
 
-
-        this.dataService.getBrands().subscribe((brands) => {
-          console.log("MARCAS", brands);
-        })
-
-        this.chartService.getJobsClients('Fiat').subscribe((vehicle: any) => {
-          console.log("DATA", vehicle);
-          console.log("LENGHT", vehicle.length);
-
-          this.vehicle = vehicle.length
-        })
-
-
+      this.chartService.getBrand('vehicleBrand').subscribe((brand: any) => {
+        const brands = brand.filter((item: any, index: any) => {
+          return index === brand.findIndex((obj: any) => {
+            return JSON.stringify(obj) === JSON.stringify(item);
+          });
+        });
+        this.brands = brands
+      })
     }
 
+
+    submit () {
+      this.year = this.myForm.get('year')?.value
+      this.month = this.myForm.get('month')?.value
+      this.brand = this.myForm.get('brand')?.value
+       this.chartService.getJobs(this.year, this.month, this.brand).subscribe((res: any) => {
+         this.result = res.length
+      })
+    }
 
 }
