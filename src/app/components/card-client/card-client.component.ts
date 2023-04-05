@@ -26,6 +26,7 @@ export class CardClientComponent implements OnInit {
   public days: any = [];
   public months: any = [];
   public years: any = [];
+  public year!: number;
 
 
 
@@ -34,6 +35,7 @@ export class CardClientComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.year = new Date().getFullYear()
 
     this.dataService.getDays().subscribe((day) => {
          this.days = day

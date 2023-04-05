@@ -62,7 +62,7 @@
               <div class="date">
                 <label for="">Año</label>
                 <select class="date" formControlName="year" >
-                  <option *ngFor="let item of years"  [value]="item?.year">{{item?.year}}</option>
+                  <option  [value]="year">{{year}}</option>
                 </select>
                 <div class="error" *ngIf="invalidField('year')" >
                   <span  *ngIf="myForm.controls?.['year']?.errors?.['required']" > Campo Obligatorio </span>
