@@ -1,15 +1,18 @@
-<div>
+<div class="title">
   <h1>Estadisticas</h1>
 </div>
 
-<div>
-  <p >{{year}}</p>
+<div class="result" *ngIf="result >= 1 else nofound"  >
+  <p>{{year}}</p>
   <p>{{month}}</p>
   <p>{{brand}}</p>
-
   <p>Datos: {{result}}</p>
-
 </div>
+
+<ng-template  #nofound >
+  <h4 class="noresult">No hay datos para mostrar</h4>
+</ng-template>
+
 
 <form [formGroup]="myForm" (ngSubmit)="submit()">
 
@@ -20,6 +23,9 @@
         <select id="year" class="select" formControlName="year">
           <option *ngFor="let item of years" [value]="item.year">{{item.year}}</option>
         </select>
+        <div class="error" *ngIf="invalidField('year')" >
+          <span  *ngIf="myForm.controls?.['year']?.errors?.['required']" > Campo obligatorio </span>
+        </div>
       </div>
     </div>
     <div >
@@ -28,6 +34,9 @@
         <select id="month" class="select" formControlName="month">
           <option *ngFor="let item of months" [value]="item?.month">{{item?.month}}</option>
        </select>
+       <div class="error" *ngIf="invalidField('month')" >
+        <span  *ngIf="myForm.controls?.['month']?.errors?.['required']" > Campo obligatorio </span>
+      </div>
       </div>
     </div>
     <div >
@@ -36,6 +45,9 @@
         <select id="month" class="select" formControlName="brand">
           <option *ngFor="let item of brands" [value]="item?.vehicleBrand">{{item?.vehicleBrand}}</option>
        </select>
+       <div class="error" *ngIf="invalidField('brand')" >
+        <span  *ngIf="myForm.controls?.['brand']?.errors?.['required']" > Campo obligatorio </span>
+      </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BRANDS } from 'src/app/interfaces/brands.interface';
 import { DAY } from 'src/app/interfaces/day.interface';
 import { MONTH } from 'src/app/interfaces/month.interface';
@@ -14,7 +14,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ChartComponent implements OnInit {
 
-  public result!: number;
+  public result: any = 0 || undefined;
 
   public year!: number;
   public month!: string;
@@ -36,10 +36,12 @@ export class ChartComponent implements OnInit {
 
     ngOnInit() {
 
+      console.log("Resultado oninit", this.result);
+
       this.myForm = this.fb.group({
-        year: [''],
-        month: [''],
-        brand: ['']
+        year: ['', [Validators.required]],
+        month: ['', [Validators.required]],
+        brand: ['', [Validators.required]]
       })
 
 
@@ -71,14 +73,26 @@ export class ChartComponent implements OnInit {
       })
     }
 
+    invalidField( field: string ) {
+      return this.myForm.get(field)?.invalid
+              && this.myForm.get(field)?.touched;
+    }
+
 
     submit () {
-      this.year = this.myForm.get('year')?.value
-      this.month = this.myForm.get('month')?.value
-      this.brand = this.myForm.get('brand')?.value
-       this.chartService.getJobs(this.year, this.month, this.brand).subscribe((res: any) => {
-         this.result = res.length
-      })
+      if(this.myForm.invalid) {
+        this.myForm.markAllAsTouched();
+      }else {
+        this.year = this.myForm.get('year')?.value
+        this.month = this.myForm.get('month')?.value
+        this.brand = this.myForm.get('brand')?.value
+         this.chartService.getJobs(this.year, this.month, this.brand).subscribe((res: any) => {
+           this.result = res.length
+           console.log(this.result);
+
+        })
+      }
     }
+
 
 }

@@ -1,9 +1,18 @@
-.card {
-  background: var(--surface-card);
-  padding: 2rem;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  width: 50%;
+.title {
+  text-align: center;
+}
+
+.result {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: yellowgreen;
+  margin-bottom: 30px;
+}
+
+.noresult {
+  text-align: center;
+  color: red;
 }
 
 .select {
