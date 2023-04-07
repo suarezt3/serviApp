@@ -6,13 +6,16 @@
   width: 40%;
   margin-left: auto;
   margin-right: auto;
-  background-color: yellowgreen;
   margin-bottom: 30px;
 }
 
 .noresult {
   text-align: center;
   color: red;
+}
+
+.list-car {
+  list-style: none;
 }
 
 .select {

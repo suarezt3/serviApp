@@ -2,11 +2,13 @@
   <h1>Estadisticas</h1>
 </div>
 
-<div class="result" *ngIf="result >= 1 else nofound"  >
-  <p>{{year}}</p>
-  <p>{{month}}</p>
-  <p>{{brand}}</p>
-  <p>Datos: {{result}}</p>
+<div class="result" *ngIf="result >= 1 else nofound">
+  <div class="list-car" *ngFor="let item of cars">
+    <li>{{item.vehicle}}</li>
+  </div>
+  <div class="card">
+    <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+</div>
 </div>
 
 <ng-template  #nofound >
