@@ -64,14 +64,14 @@ getClientDocument(id: string): Observable<Client> {
      * @param id Para editar los datos de un cliente
      * @returns
      */
-    editClientDocument(id: string) {
+    editClientDocument(id: string, body: {}) {
       let headers = new HttpHeaders({
         'apikey'       : environment.supabaseKey,
         'Authorization': environment.authorization,
         'Content-Type' : 'application/json',
       })
 
-       return this.http.patch(`${this.url}?numberDocument=eq.${id}`, {headers}).pipe()
+       return this.http.patch(`${this.url}?numberDocument=eq.${id}`, body, {headers}).pipe()
     }
 
 

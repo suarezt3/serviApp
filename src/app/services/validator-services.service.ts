@@ -24,7 +24,6 @@ export class ValidatorServicesService implements AsyncValidator {
                 .pipe(
                   // delay(3000),
                   map( resp => {
-                    console.log("RESPUESTA", resp);
                     return ( resp.length === 0 )
                         ? null
                         : { plateExist: 'Esta placa ya existe en la base de datos' }

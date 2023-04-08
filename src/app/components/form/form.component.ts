@@ -4,7 +4,7 @@ import { DataService } from 'src/app/services/data.service';
 import {MessageService} from 'primeng/api';
 import { __values } from 'tslib';
 import { ValidatorServicesService } from 'src/app/services/validator-services.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BRANDS } from 'src/app/interfaces/brands.interface';
 
 
@@ -24,7 +24,7 @@ export class FormComponent implements OnInit  {
   public id: any;
 
 
-  constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService, private plateValidator: ValidatorServicesService, private activatedRoute: ActivatedRoute) {this.obtenerParametroUrl()}
+  constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService, private plateValidator: ValidatorServicesService, private activatedRoute: ActivatedRoute, private router: Router) {this.obtenerParametroUrl()}
 
   ngOnInit(): void {
 
@@ -53,8 +53,6 @@ export class FormComponent implements OnInit  {
       this.id= params.get('id');
       if (this.id) {
         this.dataService.getClientDocument(this.id).subscribe((res: any) => {
-          console.log("RES", res);
-
            this.myForm.patchValue({
              name: res[0]?.name,
              documentType: res[0]?.documentType,
@@ -103,7 +101,10 @@ export class FormComponent implements OnInit  {
       this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Cliente creado satisfactoriamente'});
       this.myForm.reset()
       }else{
-        this.dataService.editClientDocument(this.id).subscribe()
+        let editForm = this.myForm.value
+        this.dataService.editClientDocument(this.id, editForm).subscribe()
+        this.router.navigate(['/']);
+        this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Los datos del cliente se actualizaron'});
       }
 
 
