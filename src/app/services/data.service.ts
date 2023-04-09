@@ -34,13 +34,13 @@ export class DataService {
  * @param id Para obtener datos de un cliente
  * @returns
  */
-getClientDocument(id: string): Observable<Client> {
+getClientPlate(id: string): Observable<Client> {
   let headers = new HttpHeaders({
     'apikey'       : environment.supabaseKey,
     'Authorization': environment.authorization,
   })
 
-   return this.http.get<Client>(`${this.url}?numberDocument=eq.${id}`, {headers}).pipe()
+   return this.http.get<Client>(`${this.url}?plate=eq.${id}`, {headers}).pipe()
 }
 
 
@@ -71,7 +71,7 @@ getClientDocument(id: string): Observable<Client> {
         'Content-Type' : 'application/json',
       })
 
-       return this.http.patch(`${this.url}?numberDocument=eq.${id}`, body, {headers}).pipe()
+       return this.http.patch(`${this.url}?plate=eq.${id}`, body, {headers}).pipe()
     }
 
 
@@ -95,13 +95,13 @@ getClientDocument(id: string): Observable<Client> {
  * @param id Para obtener datos de cada trabajo de un cliente
  * @returns
  */
-getJobsClients(id: string): Observable<Client> {
+getJobsClients(id: string) {
   let headers = new HttpHeaders({
     'apikey'       : environment.supabaseKey,
     'Authorization': environment.authorization,
   })
 
-   return this.http.get<Client>(`${this.urlJobs}?user=eq.${id}`, {headers})
+   return this.http.get(`${this.urlJobs}?plate=eq.${id}`, {headers})
 }
 
 

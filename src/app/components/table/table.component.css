@@ -5,3 +5,7 @@
 :host ::ng-deep .header {
   font-size: 1.5rem;
 }
+
+.empty {
+  color: red;
+}

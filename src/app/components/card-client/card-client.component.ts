@@ -22,6 +22,8 @@ export class CardClientComponent implements OnInit {
   public displayBasic2!: boolean;
   public vehicle!: string | null;
   public vehicleBrand!: string | null;
+  public plate!: string | null;
+  public numberDocument!: number | null;
 
   public days: any = [];
   public months: any = [];
@@ -54,28 +56,36 @@ export class CardClientComponent implements OnInit {
      * Id del cliente
      */
     this.activatedRoute.params.subscribe(({id}) => this.id = id)
+
     /**
      * Enviar el id para cargar la data de un cliente individual
      */
     this.activatedRoute.params
     .pipe(
-     switchMap( ({ id }) =>  this.dataService.getClientDocument(id) ))
+     switchMap( ({ id }) =>  this.dataService.getClientPlate(id) ))
     .subscribe( (client: any) => {
        this.client = client[0];
        this.vehicle = client[0]?.vehicle
        this.vehicleBrand = client[0]?.vehicleBrand
+       this.plate = client[0]?.plate,
+       this.numberDocument = client[0]?.numberDocument
     });
 
 
    /**
      * Metodo para obtener los trabajos de cada cliente
      */
-   this.activatedRoute.params
-   .pipe(
-    switchMap( ({ id }) =>  this.dataService.getJobsClients(id) ))
-   .subscribe( (jobs) => {
-      this.jobs = jobs;
-   });
+    this.activatedRoute.params
+    .pipe(
+     switchMap( ({ id }) =>  this.dataService.getJobsClients(id) ))
+    .subscribe( (jobs) => {
+       this.jobs = jobs;
+    });
+
+
+  //  this.dataService.getJobsClients(this.id).subscribe((res) => {
+  //   this.jobs = res;
+  //  })
 
 
     /**
@@ -88,9 +98,10 @@ export class CardClientComponent implements OnInit {
       price: ['', [Validators.required]],
       numberOrder: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      user: [this.id, [Validators.required]],
-      vehicle: [],
-      vehicleBrand: []
+      user: [this.numberDocument, [Validators.required]],
+      vehicle: [this.vehicle],
+      vehicleBrand: [this.vehicleBrand],
+      plate: [this.plate]
     })
 
 
@@ -103,9 +114,12 @@ export class CardClientComponent implements OnInit {
   }
 
 
-  submit(): void {
-    this.myForm.get('vehicle')?.setValue(this.vehicle)
-    this.myForm.get('vehicleBrand')?.setValue(this.vehicleBrand)
+  submit() {
+    console.log("FORMULARIO", this.myForm.value);
+     this.myForm.get('vehicle')?.setValue(this.vehicle)
+     this.myForm.get('vehicleBrand')?.setValue(this.vehicleBrand)
+     this.myForm.get('plate')?.setValue(this.plate)
+     this.myForm.get('user')?.setValue(this.numberDocument)
       let dataForm: {}
       dataForm = this.myForm.value
       if(this.myForm.invalid) {
@@ -113,6 +127,7 @@ export class CardClientComponent implements OnInit {
       }else {
         this.dataService.createJobs(dataForm).subscribe()
         this.myForm.reset();
+        console.log("FORMULARIO", dataForm);
         window.location.reload()
         this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Trabajo registrado con exito'});
       }

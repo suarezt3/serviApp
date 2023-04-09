@@ -52,7 +52,7 @@ export class FormComponent implements OnInit  {
     this.activatedRoute.paramMap.subscribe((params: any) => {
       this.id= params.get('id');
       if (this.id) {
-        this.dataService.getClientDocument(this.id).subscribe((res: any) => {
+        this.dataService.getClientPlate(this.id).subscribe((res: any) => {
            this.myForm.patchValue({
              name: res[0]?.name,
              documentType: res[0]?.documentType,
