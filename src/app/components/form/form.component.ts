@@ -59,7 +59,9 @@ export class FormComponent implements OnInit  {
              phone: res[0]?.phone,
              vehicle: res[0]?.vehicle,
              numberDocument: res[0]?.numberDocument,
-             address: res[0]?.address
+             address: res[0]?.address,
+             vehicleBrand: res[0]?.vehicleBrand,
+             plate: res[0]?.plate
            });
         });
       }
@@ -102,9 +104,8 @@ export class FormComponent implements OnInit  {
       this.myForm.reset()
       }else{
         let editForm = this.myForm.value
-        this.dataService.editClientDocument(this.id, editForm).subscribe()
+        this.dataService.editClientDocument(this.id, editForm).subscribe();
         this.router.navigate(['/']);
-        this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Los datos del cliente se actualizaron'});
       }
 
 
