@@ -53,16 +53,16 @@ currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} clientes
       [paginator]="true"
       [(first)]="first"
       currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} clientes"
-      [tableStyle]="{ 'min-width': '75rem' }"
+      [tableStyle]="{ 'max-width': '75rem', 'margin-right': 'auto', 'margin-left':'auto' }"
       >
       <ng-template pTemplate="header">
           <tr>
-            <th class="header">Nombre</th>
-            <th class="header">Documento</th>
-            <th class="header">Vehiculo</th>
-            <th class="header">Modelo</th>
-            <th class="header">Placa</th>
-            <th class="header">Acciones</th>
+            <th [style]="{'width':'10%', 'font-size': '1.5rem'}">Nombre</th>
+            <th [style]="{'width':'10%', 'font-size': '1.5rem'}">Documento</th>
+            <th [style]="{'width':'10%', 'font-size': '1.5rem'}">Vehiculo</th>
+            <th [style]="{'width':'10%', 'font-size': '1.5rem'}">Modelo</th>
+            <th [style]="{'width':'10%', 'font-size': '1.5rem'}">Placa</th>
+            <th [style]="{'font-size': '1.5rem'}">Acciones</th>
           </tr>
           <tr>
               <th>
@@ -85,11 +85,11 @@ currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} clientes
       </ng-template>
       <ng-template pTemplate="body" let-data>
           <tr>
-            <td>{{data.name}}</td>
-            <td>{{data.numberDocument}}</td>
-            <td>{{data.vehicleBrand}}</td>
-            <td>{{data.vehicle}}</td>
-            <td>{{data.plate | uppercase}}</td>
+            <td style="width:16%">{{data.name}}</td>
+            <td style="width:16%">{{data.numberDocument}}</td>
+            <td style="width:16%">{{data.vehicleBrand}}</td>
+            <td style="width:16%">{{data.vehicle}}</td>
+            <td style="width:16%">{{data.plate | uppercase}}</td>
             <td>
               <button [routerLink]="[data?.plate|| undefined]" pButton pRipple type="button" label="Ver mas" class="p-button-info btn"></button>
               <button [routerLink]="['/editar', data?.plate]"  pButton pRipple type="button" label="Editar" class="p-button-danger btn"></button>
