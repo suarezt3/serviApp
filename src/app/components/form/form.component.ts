@@ -38,7 +38,7 @@ export class FormComponent implements OnInit  {
       name           : ['', [Validators.required,  Validators.maxLength(50)]],
       documentType   : ['', [Validators.required]],
       numberDocument : [  , [Validators.required]],
-      address        : ['', [Validators.required,  Validators.maxLength(50)]],
+      email          : ['', [Validators.required, Validators.email]],
       phone          : ['', [Validators.required]],
       vehicle        : ['', [Validators.required, Validators.maxLength(20)]],
       vehicleBrand   : ['', [Validators.required]],
@@ -59,7 +59,7 @@ export class FormComponent implements OnInit  {
              phone: res[0]?.phone,
              vehicle: res[0]?.vehicle,
              numberDocument: res[0]?.numberDocument,
-             address: res[0]?.address,
+             email: res[0]?.email,
              vehicleBrand: res[0]?.vehicleBrand,
              plate: res[0]?.plate
            });
@@ -89,7 +89,7 @@ export class FormComponent implements OnInit  {
        name             : this.myForm.get('name')?.value,
        documentType     : this.myForm.get('documentType')?.value,
        numberDocument   : this.myForm.get('numberDocument')?.value,
-       address          : this.myForm.get('address')?.value,
+       email          : this.myForm.get('email')?.value,
        phone            : this.myForm.get('phone')?.value,
        vehicle          : this.myForm.get('vehicle')?.value,
        vehicleBrand     : this.myForm.get('vehicleBrand')?.value,

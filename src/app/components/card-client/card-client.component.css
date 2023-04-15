@@ -10,6 +10,10 @@
   border-radius: 4px;
 }
 
+.form-content {
+  margin-bottom: 70px;
+}
+
 .title {
   text-align: center;
 }
@@ -40,9 +44,7 @@
   margin-bottom: 20px;
 }
 
-.container_dates {
-  margin-bottom: 40px;
-}
+
 
 .btn {
   margin-bottom: 20px;
@@ -51,19 +53,6 @@
 .alert {
   color: rgb(230, 66, 66);
   margin-left: 6%
-}
-
-.dates {
-  display: flex;
-  justify-content: space-between;
-}
-
-.date {
-  border-radius: 3px;
-  margin-right: 10px;
-  height: 35px;
-  width: 150px;
-  font-family: 'Montserrat', sans-serif;
 }
 
 

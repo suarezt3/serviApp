@@ -64,18 +64,17 @@
       </div>
     </div>
 
-    <label for="address"> Direccion</label>
+    <label for="email"> Correo</label>
     <div class="field col">
       <input
           pInputText
           class="input"
-          id="address"
+          id="email"
           type="text"
-          formControlName="address">
-          <div class="error" *ngIf="invalidField('address')" >
-            <span  *ngIf="myForm.controls?.['address']?.errors?.['required']" > Campo Obligatorio </span>
-            <span  *ngIf="myForm.controls?.['address']?.errors?.['minlength']" > Minimo 5 caracteres </span>
-            <span  *ngIf="myForm.controls?.['address']?.errors?.['maxlength']" > Maximo 50 caracteres </span>
+          formControlName="email">
+          <div class="error" *ngIf="invalidField('email')" >
+            <span  *ngIf="myForm.controls?.['email']?.errors?.['required']" > Campo Obligatorio </span>
+            <span  *ngIf="myForm.controls?.['email']?.errors?.['email']" > Ingrese un email valido </span>
           </div>
     </div>
 

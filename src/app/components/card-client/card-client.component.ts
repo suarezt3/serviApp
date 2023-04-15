@@ -92,9 +92,8 @@ export class CardClientComponent implements OnInit {
      * Formulario para crear los trabajos del cliente
      */
     this.myForm = this.fb.group({
-      day: ['', [Validators.required]],
-      month: ['', [Validators.required]],
-      year: ['', [Validators.required]],
+      date: ['', [Validators.required]],
+      nextDate: ['', [Validators.required]],
       price: ['', [Validators.required]],
       numberOrder: ['', [Validators.required]],
       description: ['', [Validators.required]],
