@@ -4,26 +4,26 @@
     <div class="card">
       <div class="div-1">
         <div>
-          <h5>{{client?.name}}</h5>
-          <h5>{{client?.documentType}} - {{client?.numberDocument}}</h5>
+          <p>{{client?.name}}</p>
+          <p>{{client?.documentType}} - {{client?.numberDocument}}</p>
         </div>
         <div>
-          <h5> Correo: {{client?.email}}</h5>
-          <h5> Contacto: {{client?.phone}}</h5>
+          <p>{{client?.email}}</p>
+          <p> Contacto: <span>{{client?.phone}}</span> </p>
         </div>
         <div>
-          <h5>{{client?.vehicleBrand}}</h5>
-          <h5>{{client?.vehicle}}</h5>
-          <h5>Placa: {{client?.plate | uppercase}}</h5>
+          <p>{{client?.vehicleBrand}}</p>
+          <p>{{client?.vehicle}}</p>
+          <p>Placa: {{client?.plate | uppercase}}</p>
         </div>
        </div>
        <div class="div-2">
-        <h4>Trabajos realizados</h4>
-        <button class="btn" pButton (click)="showBasicDialog()" icon="pi pi-car" label="Nuevo trabajo"></button>
-        <p-dialog class="dialog" header="Ingresa los datos del trabajo realizado" [(visible)]="displayBasic2" [baseZIndex]="10000">
+        <h4>Trabajos realizados {{this.jobs.length}} </h4>
+        <button class="p-button-warning btn" pButton (click)="showBasicDialog()" icon="pi pi-car" label="Nuevo trabajo"></button>
+        <p-dialog header="Ingresa los datos del trabajo realizado" [(visible)]="displayBasic2" [baseZIndex]="10000">
 
-       <form class="form-content" [formGroup]="myForm" (ngSubmit)="submit()">
-        <div class=" p-fluid p-grid p-formgrid">
+           <form class="form-content" [formGroup]="myForm" (ngSubmit)="submit()">
+         <div class=" p-fluid p-grid p-formgrid">
 
           <label>Tipo de trabajo realizado</label>
           <div class="p-field input">

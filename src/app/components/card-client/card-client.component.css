@@ -1,12 +1,11 @@
 
 
 .card-content {
-  width: 98%;
+  width: 100%;
   margin-top: 1em;
   margin-left: auto;
   margin-right: auto;
   background-color: var(--surface-a);
-  padding: 1em;
   border-radius: 4px;
 }
 
@@ -24,6 +23,10 @@
   flex-direction: column;
   border-radius: 5px;
   background-color: rgba(0, 101, 253, 0.158);
+  background-color: var(--primary-color);
+  padding: 0.3em;
+  width: 100%;
+  color: white;
 }
 
 .div-1 {
@@ -55,6 +58,8 @@
 
 .btn {
   margin-bottom: 20px;
+  background-color: #FAB710;
+  color: black;
 }
 
 .alert {
@@ -67,7 +72,7 @@ label{
 }
 
 /*Media Queris*/
-@media only screen and (min-width: 550px) {
+ @media only screen and (min-width: 550px) {
   .card-content {
     width: 98%;
     padding: 10px;
@@ -78,6 +83,7 @@ label{
   }
 }
 
+
 @media only screen and (min-width: 768px) {
   .card-content {
     width: 80%;
@@ -87,6 +93,6 @@ label{
 
 @media only screen and (min-width: 1024px) {
   .card-content {
-    width: 40%;
+    width: 60%;
   }
 }
