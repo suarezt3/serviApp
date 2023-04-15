@@ -25,30 +25,11 @@ export class CardClientComponent implements OnInit {
   public plate!: string | null;
   public numberDocument!: number | null;
 
-  public days: any = [];
-  public months: any = [];
-  public years: any = [];
-  public year!: number;
-
-
 
   constructor(private fb: FormBuilder, private dataService: DataService, private activatedRoute: ActivatedRoute, private messageService: MessageService) {}
 
 
   ngOnInit(): void {
-
-    this.year = new Date().getFullYear()
-
-    this.dataService.getDays().subscribe((day) => {
-         this.days = day
-       });
-    this.dataService.getMonths().subscribe((month) => {
-        this.months = month
-       });
-    this.dataService.getYears().subscribe((year) => {
-         this.years = year
-       });
-
 
 
 
@@ -92,6 +73,7 @@ export class CardClientComponent implements OnInit {
      * Formulario para crear los trabajos del cliente
      */
     this.myForm = this.fb.group({
+      typeJobs: ['', [Validators.required]],
       date: ['', [Validators.required]],
       nextDate: ['', [Validators.required]],
       price: ['', [Validators.required]],
@@ -114,7 +96,6 @@ export class CardClientComponent implements OnInit {
 
 
   submit() {
-    console.log("FORMULARIO", this.myForm.value);
      this.myForm.get('vehicle')?.setValue(this.vehicle)
      this.myForm.get('vehicleBrand')?.setValue(this.vehicleBrand)
      this.myForm.get('plate')?.setValue(this.plate)
@@ -126,9 +107,14 @@ export class CardClientComponent implements OnInit {
       }else {
         this.dataService.createJobs(dataForm).subscribe()
         this.myForm.reset();
-        console.log("FORMULARIO", dataForm);
         window.location.reload()
-        this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Trabajo registrado con exito'});
+        this.activatedRoute.params
+        .pipe(
+         switchMap( ({ id }) =>  this.dataService.getJobsClients(id) ))
+        .subscribe( (jobs) => {
+           this.jobs = jobs;
+           this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Trabajo registrado con exito'});
+        });
       }
   }
 

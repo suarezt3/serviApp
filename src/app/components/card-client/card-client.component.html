@@ -24,14 +24,33 @@
 
        <form class="form-content" [formGroup]="myForm" (ngSubmit)="submit()">
         <div class=" p-fluid p-grid p-formgrid">
+
+          <label>Tipo de trabajo realizado</label>
+          <div class="p-field input">
+            <select  class="inputSeletc" formControlName="typeJobs">
+              <option value="Mantenimiento">Mantenimiento</option>
+              <option value="Cambio de Filtro">Cambio de Filtro</option>
+              <option value="Otros">Otros</option>
+            </select>
+            <div class="error" *ngIf="invalidField('typeJobs')" >
+              <span  *ngIf="myForm.controls?.['typeJobs']?.errors?.['required']" > Campo Obligatorio </span>
+            </div>
+          </div>
+
           <div class="p-field input">
             <label>Fecha</label>
             <p-calendar formControlName="date"></p-calendar>
+            <div class="error" *ngIf="invalidField('date')" >
+              <span  *ngIf="myForm.controls?.['date']?.errors?.['required']" > Campo Obligatorio </span>
+            </div>
           </div>
 
           <div class="p-field input">
           <label>Proximo mantenimiento</label>
             <p-calendar class="calendar"  formControlName="nextDate"></p-calendar>
+            <div class="error" *ngIf="invalidField('nextDate')" >
+              <span  *ngIf="myForm.controls?.['nextDate']?.errors?.['required']" > Campo Obligatorio </span>
+            </div>
           </div>
 
           <label for="order">Nº de orden</label>
