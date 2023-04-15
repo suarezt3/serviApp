@@ -3,7 +3,7 @@
   <h2>Ingresa los datos del cliente</h2>
 </div>
 <div class="form" [formGroup]="myForm" (ngSubmit)="save()" >
-  <div class="mx-8">
+  <div class="mx-4">
     <label for="name">Nombres</label>
     <div class="field col">
       <input
@@ -39,8 +39,8 @@
       </div>
     </div>
 
-  <label for="vehicle">Vehiculo</label>
-  <div class="field col">
+   <label for="vehicle">Vehiculo</label>
+   <div class="field col">
     <input
     pInputText
     class="input"
@@ -55,7 +55,7 @@
 
   </div>
 
-  <div class="mx-8">
+  <div class="mx-4">
     <label for="document">Numero de Documento</label>
     <div class="field col">
       <input pInputText class="input" id="document" type="number" formControlName="numberDocument">

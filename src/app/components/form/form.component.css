@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 60%;
+  width: 98%;
   margin-right: auto;
   margin-left: auto;
   padding: 20px 0;
@@ -28,9 +28,9 @@
 
 
 
-@media only screen and (max-width: 470px) {
+ @media only screen and (min-width: 1024px) {
   .form {
-    width: 98%;
+    width: 60%;
   }
 
 }
