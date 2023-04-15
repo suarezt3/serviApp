@@ -50,7 +50,7 @@ export class FormComponent implements OnInit  {
 
   obtenerParametroUrl() {
     this.activatedRoute.paramMap.subscribe((params: any) => {
-      this.id= params.get('id');
+      this.id = params.get('id');
       if (this.id) {
         this.dataService.getClientPlate(this.id).subscribe((res: any) => {
            this.myForm.patchValue({
@@ -89,20 +89,21 @@ export class FormComponent implements OnInit  {
        name             : this.myForm.get('name')?.value,
        documentType     : this.myForm.get('documentType')?.value,
        numberDocument   : this.myForm.get('numberDocument')?.value,
-       email          : this.myForm.get('email')?.value,
+       email            : this.myForm.get('email')?.value,
        phone            : this.myForm.get('phone')?.value,
        vehicle          : this.myForm.get('vehicle')?.value,
        vehicleBrand     : this.myForm.get('vehicleBrand')?.value,
        plate            : this.myForm.get('plate')?.value.toUpperCase()
      }];
 
-    if(this.myForm.invalid) {
+    if(this.myForm.invalid && !this.id) {
       this.myForm.markAllAsTouched();
     }else if(!this.id) {
       this.dataService.createClient(form).subscribe()
       this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Cliente creado satisfactoriamente'});
       this.myForm.reset()
       }else{
+        this.myForm.get('plate')?.setAsyncValidators(null)
         let editForm = this.myForm.value
         this.dataService.editClientDocument(this.id, editForm).subscribe();
         this.router.navigate(['/']);
