@@ -33,8 +33,6 @@ export class CardClientComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-
     /**
      * Id del cliente
      */
@@ -106,22 +104,21 @@ export class CardClientComponent implements OnInit {
      this.myForm.get('plate')?.setValue(this.plate)
      this.myForm.get('user')?.setValue(this.numberDocument)
      this.myForm.get('name')?.setValue(this.name)
-      let dataForm: {}
-      dataForm = this.myForm.value
-      if(this.myForm.invalid) {
-        this.myForm.markAllAsTouched();
-      }else {
-        this.dataService.createJobs(dataForm).subscribe()
-        this.myForm.reset();
-        window.location.reload()
-        this.activatedRoute.params
+     let dataForm: {}
+     dataForm = this.myForm.value
+     this.dataService.createJobs(dataForm).subscribe()
+     this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Trabajo registrado con exito'});
+     setTimeout(() => {
+      window.location.reload()
+    }, 2000);
+     this.activatedRoute.params
         .pipe(
          switchMap( ({ id }) =>  this.dataService.getJobsClients(id) ))
         .subscribe( (jobs) => {
            this.jobs = jobs;
-           this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Trabajo registrado con exito'});
-        });
-      }
+          });
+        this.myForm.reset()
+        return this.jobs
   }
 
   cancel() {
