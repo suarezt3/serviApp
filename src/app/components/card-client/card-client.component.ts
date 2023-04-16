@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute} from '@angular/router';
 import { MessageService } from 'primeng/api';
 
-import { switchMap} from 'rxjs/operators';
+import { count, switchMap} from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 
 
@@ -24,6 +24,8 @@ export class CardClientComponent implements OnInit {
   public vehicleBrand!: string | null;
   public plate!: string | null;
   public numberDocument!: number | null;
+  public name!: string | null;
+  public countJobs: any = 0;
 
 
   constructor(private fb: FormBuilder, private dataService: DataService, private activatedRoute: ActivatedRoute, private messageService: MessageService) {}
@@ -50,6 +52,7 @@ export class CardClientComponent implements OnInit {
        this.vehicleBrand = client[0]?.vehicleBrand
        this.plate = client[0]?.plate,
        this.numberDocument = client[0]?.numberDocument
+       this.name = client[0]?.name
     });
 
 
@@ -61,6 +64,7 @@ export class CardClientComponent implements OnInit {
      switchMap( ({ id }) =>  this.dataService.getJobsClients(id) ))
     .subscribe( (jobs) => {
        this.jobs = jobs;
+       this.countJobs = this.jobs.length
     });
 
 
@@ -79,10 +83,11 @@ export class CardClientComponent implements OnInit {
       price: ['', [Validators.required]],
       numberOrder: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      user: [this.numberDocument, [Validators.required]],
-      vehicle: [this.vehicle],
-      vehicleBrand: [this.vehicleBrand],
-      plate: [this.plate]
+      user: ['', [Validators.required]],
+      vehicle: [''],
+      vehicleBrand: [''],
+      plate: [''],
+      name: ['']
     })
 
 
@@ -100,6 +105,7 @@ export class CardClientComponent implements OnInit {
      this.myForm.get('vehicleBrand')?.setValue(this.vehicleBrand)
      this.myForm.get('plate')?.setValue(this.plate)
      this.myForm.get('user')?.setValue(this.numberDocument)
+     this.myForm.get('name')?.setValue(this.name)
       let dataForm: {}
       dataForm = this.myForm.value
       if(this.myForm.invalid) {

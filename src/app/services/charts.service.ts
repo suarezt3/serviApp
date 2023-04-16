@@ -15,19 +15,29 @@ export class ChartsService {
   constructor(private http: HttpClient) { }
 
 
+  getJobs() {
+    let headers = new HttpHeaders({
+      'apikey'       : environment.supabaseKey,
+      'Authorization': environment.authorization,
+    })
+     return this.http.get(`${this.url}`, {headers})
+    }
+
+
+
 
   /**
    *
    * @param vehicle devuelve la data filtrada por mes, año y marca de auto
    * @returns
    */
-  getJobs(year: number, month: string, brand: string) {
-    let headers = new HttpHeaders({
-      'apikey'       : environment.supabaseKey,
-      'Authorization': environment.authorization,
-    })
-     return this.http.get(`${this.url}?year=eq.${year}&month=eq.${month}&vehicleBrand=eq.${brand}`, {headers})
-    }
+  // getJobs(year: number, month: string, brand: string) {
+  //   let headers = new HttpHeaders({
+  //     'apikey'       : environment.supabaseKey,
+  //     'Authorization': environment.authorization,
+  //   })
+  //    return this.http.get(`${this.url}?year=eq.${year}&month=eq.${month}&vehicleBrand=eq.${brand}`, {headers})
+  //   }
 
 
     /**
@@ -61,12 +71,12 @@ export class ChartsService {
        * @param brand devuelve las marcas de autos de la base de autos
        * @returns
        */
-    getBrand(brand: string) {
+    getBrand(plate: string) {
       let headers = new HttpHeaders({
         'apikey'       : environment.supabaseKey,
         'Authorization': environment.authorization,
       })
-       return this.http.get(`${this.url}?select=${brand}`, {headers})
+       return this.http.get(`${this.url}?select=${plate}`, {headers})
       }
 
 

@@ -85,11 +85,11 @@ currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} clientes
       </ng-template>
       <ng-template pTemplate="body" let-data>
           <tr>
-            <td style="width:16%">{{data.name}}</td>
-            <td style="width:16%">{{data.numberDocument}}</td>
-            <td style="width:16%">{{data.vehicleBrand}}</td>
-            <td style="width:16%">{{data.vehicle}}</td>
-            <td style="width:16%">{{data.plate | uppercase}}</td>
+            <td style="width:16%">{{data?.name}}</td>
+            <td style="width:16%">{{data?.numberDocument}}</td>
+            <td style="width:16%">{{data?.vehicleBrand}}</td>
+            <td style="width:16%">{{data?.vehicle}}</td>
+            <td style="width:16%">{{data?.plate | uppercase}}</td>
             <td>
               <button [routerLink]="[data?.plate|| undefined]" pButton pRipple type="button" label="Ver mas" class="p-button-info btn"></button>
               <button [routerLink]="['/editar', data?.plate]"  pButton pRipple type="button" label="Editar" class="p-button-danger btn"></button>

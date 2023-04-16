@@ -18,7 +18,7 @@
         </div>
        </div>
        <div class="div-2">
-        <h4>Trabajos realizados {{this.jobs.length}} </h4>
+        <h4>Trabajos realizados {{this.countJobs}} </h4>
         <button class="p-button-warning btn" pButton (click)="showBasicDialog()" icon="pi pi-car" label="Nuevo trabajo"></button>
         <p-dialog header="Ingresa los datos del trabajo realizado" [(visible)]="displayBasic2" [baseZIndex]="10000">
 
@@ -87,7 +87,7 @@
 
 </div>
 <p-accordion>
-  <p-accordionTab *ngFor="let item of jobs"  header="{{item?.date | date}}" >
+  <p-accordionTab *ngFor="let item of jobs"  header="{{item?.date | date}} {{item.typeJobs}}" >
     <div>
       <h3>Orden:</h3>
       <span>{{item.numberOrder}}</span>

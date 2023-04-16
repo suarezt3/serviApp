@@ -18,7 +18,7 @@ export class DataService {
 
 /**
  *
- * @returns Trae la base de datos
+ * @returns Trae la tabla de los clientes
  */
   getClientes() {
     let headers = new HttpHeaders({
@@ -27,6 +27,18 @@ export class DataService {
     })
      return this.http.get<any>(this.url, {headers}).pipe()
 }
+
+ /**
+  *
+  * @returns Trae la tabla de los trabajos
+  */
+getJobs() {
+  let headers = new HttpHeaders({
+    'apikey'       : environment.supabaseKey,
+    'Authorization': environment.authorization,
+  })
+   return this.http.get(`${this.urlJobs}`, {headers})
+  }
 
 
 /**
