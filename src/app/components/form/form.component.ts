@@ -104,9 +104,14 @@ export class FormComponent implements OnInit  {
       this.myForm.reset()
       }else{
         this.myForm.get('plate')?.setAsyncValidators(null)
+        this.myForm.get('plate')?.disable
         let editForm = this.myForm.value
         this.dataService.editClientDocument(this.id, editForm).subscribe();
-        this.router.navigate(['/']);
+        this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Cliente actualizado satisfactoriamente'});
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        },2000)
+
       }
 
 
