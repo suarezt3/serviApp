@@ -87,7 +87,7 @@
 
 </div>
 <p-accordion>
-  <p-accordionTab *ngFor="let item of jobs"  header="{{item?.date | date}} {{item.typeJobs}}" >
+  <p-accordionTab *ngFor="let item of jobs"  header="{{item?.date | date: 'longDate'}} - {{item.typeJobs}}" >
     <div>
       <h3>Orden:</h3>
       <span>{{item.numberOrder}}</span>
