@@ -1,0 +1,1 @@
+ <p [ngClass]="{'success': daysDiff <= 30, 'warning': daysDiff >= 30, 'normal': daysDiff > 60}" >Faltan: {{ daysDiff }} dias para el proximo {{jobs?.typeJobs}}</p>

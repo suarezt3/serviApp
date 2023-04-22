@@ -2,13 +2,12 @@
   <h1>Estadisticas</h1>
 </div>
 
-<div class="result" *ngIf="result >= 1 else nofound">
+<!-- <div class="result" *ngIf="result >= 1 else nofound">
 
 </div>
-
 <ng-template  #nofound >
   <h4 class="noresult">No hay datos para mostrar</h4>
-</ng-template>
+</ng-template> -->
 
 <div class="card">
   <p-table [value]="jobs" [tableStyle]="{'min-width': '50rem'}">
@@ -19,18 +18,18 @@
               <th>Modelo</th>
               <th>Vehiculo</th>
               <th>Trabajo</th>
-              <th>Fecha de ultimo trabajo</th>
+              <th>Estado</th>
               <!-- <th>Quantity</th> -->
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-jobs>
-          <tr [ngClass]="{'row-accessories': jobs.category === 'Accessories'}">
+          <tr >
               <td>{{jobs?.name}}</td>
               <td>{{jobs?.plate}}</td>
               <td>{{jobs?.vehicle}}</td>
               <td>{{jobs?.vehicleBrand}}</td>
-              <td>{{jobs?.typeJobs}}</td>
-              <td>{{jobs?.date}}</td>
+              <td>{{jobs?.typeJobs}} - {{jobs?.description}}</td>
+              <td> <app-next-date [jobs]="jobs"  [nextDate]="jobs?.nextDate" ></app-next-date> </td>
 
               <!-- <td>
                   <div [ngClass]="{'outofstock': product.quantity === 0, 'lowstock': (product.quantity > 0 && product.quantity < 10),'instock': product.quantity > 10}">
@@ -44,9 +43,10 @@
 
 
 
-<form [formGroup]="myForm" (ngSubmit)="submit()">
 
-  <!-- <div class="container-select">
+ <!-- <form [formGroup]="myForm" (ngSubmit)="submit()">
+
+  <div class="container-select">
     <div>
       <label for="year">Selecciona un año</label>
       <div>
@@ -80,7 +80,7 @@
       </div>
       </div>
     </div>
-  </div> -->
+  </div>
   <div class="container_btn"><p-button class="btn" (click)="submit()" label="Enviar"></p-button></div>
 
-</form>
+</form> -->

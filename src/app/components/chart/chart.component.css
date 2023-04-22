@@ -45,3 +45,15 @@
 .btn {
   margin-left: 53%;
 }
+
+.alert {
+  color: red;
+}
+
+.warning {
+  color: orange;
+}
+
+.normal {
+  color: green;
+}

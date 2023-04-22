@@ -1,0 +1,17 @@
+.alert {
+  color: red;
+}
+
+.warning {
+  color: orange;
+}
+
+.normal {
+  color: rgb(3, 175, 3);
+}
+
+
+/* :host ::ng-deep p-tag {
+  font-size: 1.5rem;
+  background-color: yellowgreen;
+} */

@@ -14,6 +14,7 @@ import { PrimengModule } from '../primeNG/primeng.module';
 import { FormComponent } from './form/form.component';
 import { CardClientComponent } from './card-client/card-client.component';
 import { ChartComponent } from './chart/chart.component';
+import { NextDateComponent } from './next-date/next-date.component';
 
 
 
@@ -26,6 +27,7 @@ import { ChartComponent } from './chart/chart.component';
     FormComponent,
     CardClientComponent,
     ChartComponent,
+    NextDateComponent,
 
   ],
   exports: [
@@ -34,7 +36,8 @@ import { ChartComponent } from './chart/chart.component';
     LoginComponent,
     RegisterComponent,
     FormComponent,
-    CardClientComponent
+    CardClientComponent,
+    NextDateComponent
   ],
   imports: [
     CommonModule,
