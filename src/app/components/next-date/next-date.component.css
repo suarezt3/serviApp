@@ -1,14 +1,18 @@
 .alert {
   color: red;
+  font-weight: bold;
 }
 
 .warning {
   color: orange;
+  font-weight: bold;
 }
 
 .normal {
-  color: rgb(3, 175, 3);
+  color: rgb(29, 190, 69);
+  font-weight: bold;
 }
+
 
 
 /* :host ::ng-deep p-tag {
