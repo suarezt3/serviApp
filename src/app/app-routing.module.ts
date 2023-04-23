@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'tabla', component: TableComponent },
   { path: 'graficas', component: ChartComponent },
   { path: ':id', component: CardClientComponent },
+  { path: 'graficas/:id', component: CardClientComponent },
   { path: '**', component: TableComponent }
 
 ];
