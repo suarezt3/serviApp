@@ -8,28 +8,59 @@
 <ng-template  #nofound >
   <h4 class="noresult">No hay datos para mostrar</h4>
 </ng-template> -->
-
+<p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
+<p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
+<p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
 <div class="card">
-  <p-table [value]="jobs" [tableStyle]="{'min-width': '50rem'}">
+  <p-table
+  styleClass="p-datatable-striped"
+  [tableStyle]="{ 'max-width': '75rem', 'margin-right': 'auto', 'margin-left':'auto' }"
+  [value]="jobs"
+  dataKey="id"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[10, 25, 50]"
+  [paginator]="true"
+  [(first)]="first"
+  currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} clientes"
+  >
       <ng-template pTemplate="header">
           <tr>
-              <th>Cliente</th>
-              <th>Placa</th>
-              <th>Modelo</th>
-              <th>Vehiculo</th>
-              <th>Trabajo</th>
-              <th>Estado</th>
+              <th [style]="{'width':'10%', 'font-size': '1.5rem'}">Cliente</th>
+              <th [style]="{'width':'10%', 'font-size': '1.5rem'}">Placa</th>
+              <th [style]="{'width':'10%', 'font-size': '1.5rem'}">Modelo</th>
+              <th [style]="{'width':'10%', 'font-size': '1.5rem'}">Vehiculo</th>
+              <th [style]="{'width':'10%', 'font-size': '1.5rem'}">Trabajo</th>
+              <th [style]="{'width':'10%', 'font-size': '1.5rem'}">Estado</th>
               <!-- <th>Quantity</th> -->
           </tr>
+          <tr>
+            <th>
+                <p-columnFilter type="text" field="name" [matchModeOptions]="matchModeOptions"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="plate" [matchModeOptions]="matchModeOptions"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="vehicle" [matchModeOptions]="matchModeOptions"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="vehicleBrand" [matchModeOptions]="matchModeOptions"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="typeJobs" [matchModeOptions]="matchModeOptions"></p-columnFilter>
+            </th>
+            <th></th>
+        </tr>
       </ng-template>
       <ng-template pTemplate="body" let-jobs>
           <tr >
-              <td>{{jobs?.name}}</td>
-              <td>{{jobs?.plate}}</td>
-              <td>{{jobs?.vehicle}}</td>
-              <td>{{jobs?.vehicleBrand}}</td>
-              <td>{{jobs?.typeJobs}} - {{jobs?.description}}</td>
-              <td> <app-next-date [jobs]="jobs"  [nextDate]="jobs?.nextDate" ></app-next-date> </td>
+              <td style="width:16%">{{jobs?.name}}</td>
+              <td style="width:16%">{{jobs?.plate}}</td>
+              <td style="width:16%">{{jobs?.vehicle}}</td>
+              <td style="width:16%">{{jobs?.vehicleBrand}}</td>
+              <td style="width:16%">{{jobs?.typeJobs}} - {{jobs?.description}}</td>
+              <td style="width:20%"> <app-next-date [jobs]="jobs"  [nextDate]="jobs?.nextDate" ></app-next-date> </td>
 
               <!-- <td>
                   <div [ngClass]="{'outofstock': product.quantity === 0, 'lowstock': (product.quantity > 0 && product.quantity < 10),'instock': product.quantity > 10}">
@@ -38,49 +69,11 @@
               </td> -->
           </tr>
       </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+            <td class="empty" colspan="5">No hay datos para mostrar.</td>
+        </tr>
+    </ng-template>
   </p-table>
 </div>
 
-
-
-
- <!-- <form [formGroup]="myForm" (ngSubmit)="submit()">
-
-  <div class="container-select">
-    <div>
-      <label for="year">Selecciona un año</label>
-      <div>
-        <select id="year" class="select" formControlName="year">
-          <option *ngFor="let item of years" [value]="item.year">{{item.year}}</option>
-        </select>
-        <div class="error" *ngIf="invalidField('year')" >
-          <span  *ngIf="myForm.controls?.['year']?.errors?.['required']" > Campo obligatorio </span>
-        </div>
-      </div>
-    </div>
-    <div >
-      <label for="month">Selecciona un mes</label>
-      <div>
-        <select id="month" class="select" formControlName="month">
-          <option *ngFor="let item of months" [value]="item?.month">{{item?.month}}</option>
-       </select>
-       <div class="error" *ngIf="invalidField('month')" >
-        <span  *ngIf="myForm.controls?.['month']?.errors?.['required']" > Campo obligatorio </span>
-      </div>
-      </div>
-    </div>
-    <div >
-      <label for="brand">Selecciona una marca</label>
-      <div>
-        <select id="month" class="select" formControlName="brand">
-          <option *ngFor="let item of brands" [value]="item?.vehicleBrand">{{item?.vehicleBrand}}</option>
-       </select>
-       <div class="error" *ngIf="invalidField('brand')" >
-        <span  *ngIf="myForm.controls?.['brand']?.errors?.['required']" > Campo obligatorio </span>
-      </div>
-      </div>
-    </div>
-  </div>
-  <div class="container_btn"><p-button class="btn" (click)="submit()" label="Enviar"></p-button></div>
-
-</form> -->
