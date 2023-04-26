@@ -1,16 +1,17 @@
+p {
+  font-weight: bold;
+}
+
 .alert {
   color: red;
-  font-weight: bold;
 }
 
 .warning {
   color: orange;
-  font-weight: bold;
 }
 
 .normal {
   color: rgb(29, 190, 69);
-  font-weight: bold;
 }
 
 
