@@ -1,1 +1,13 @@
- <p [ngClass]="{'alert': daysDiff <= 30, 'warning': daysDiff >= 30, 'normal': daysDiff > 60}" >Faltan: {{ daysDiff }} dias para el proximo {{jobs?.typeJobs}}</p>
+
+<div [ngClass]="{'alert': daysDiff <= 30, 'warning': daysDiff >= 30, 'normal': daysDiff > 60}" [ngSwitch]="jobs?.typeJobs" >
+
+  <p *ngSwitchCase="'Mantenimiento'" >
+    <i class="pi pi-wrench"></i> Proximo {{jobs?.typeJobs}} en {{ daysDiff }} dias</p>
+  <p *ngSwitchCase="'Cambio de Filtro'" >
+    <i class="pi pi-sync" ></i> Proximo {{jobs?.typeJobs}} en {{ daysDiff }} dias</p>
+  <p *ngSwitchCase="'Otros'">
+     <i class="pi pi-car" ></i> Proximo {{jobs?.typeJobs}} en {{ daysDiff }} dias</p>
+
+</div>
+
+<!-- <p [ngClass]="{'alert': daysDiff <= 30, 'warning': daysDiff >= 30, 'normal': daysDiff > 60}" >Faltan: {{ daysDiff }} dias para el proximo {{jobs?.typeJobs}}</p> -->
