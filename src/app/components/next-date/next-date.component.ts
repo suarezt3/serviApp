@@ -25,9 +25,9 @@ export class NextDateComponent implements OnInit {
     const startMoment = moment(this.dateNow);
     const endMoment: any = moment(this.nextDate);
     this.daysDiff = endMoment.diff(startMoment, "days");
-
-    console.log("HIJO", this.jobs);
-
+    if(this.daysDiff < 0){
+      this.daysDiff = 0;
+    }
   }
 
 
