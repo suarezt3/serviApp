@@ -1,6 +1,6 @@
 <p-toast></p-toast>
 <div class="title">
-  <h2>Ingresa los datos del cliente</h2>
+  <h2> {{ this.id ? "Editando datos del cliente": "Ingresa los datos del cliente"}} </h2>
 </div>
 <div class="form" [formGroup]="myForm" (ngSubmit)="save()" >
   <div class="mx-4">
@@ -125,7 +125,7 @@
     </div>
 
     <div>
-      <p-button (click)="save()" label="Guardar" styleClass="p-button-warning"></p-button>
+      <p-button (click)="save()" styleClass="p-button-warning">{{this.id ? "Editar":"Guardar"}}</p-button>
     </div>
   </div>
 </div>
