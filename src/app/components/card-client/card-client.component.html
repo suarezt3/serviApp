@@ -55,16 +55,22 @@
 
           <label for="order">Nº de orden</label>
           <div class="p-field input">
-            <input pInputText  id="order" type="number" formControlName="numberOrder">
+            <input maxlength="12" minlength="4" pInputText  id="order" type="text" formControlName="numberOrder">
             <div class="error" *ngIf="invalidField('numberOrder')" >
               <span  *ngIf="myForm.controls?.['numberOrder']?.errors?.['required']" > Campo Obligatorio </span>
+              <span  *ngIf="myForm.controls?.['numberOrder']?.errors?.['pattern']"> Solo se permiten numeros </span>
+              <span  *ngIf="myForm.controls?.['numberOrder']?.errors?.['minlength']"> Minimo 4 caracteres </span>
+              <span  *ngIf="myForm.controls?.['numberOrder']?.errors?.['maxlength']"> Maximo 11 caracteres </span>
             </div>
           </div>
           <label for="price">Valor</label>
           <div class="p-field input">
-            <input pInputText id="price" type="number" formControlName="price">
+            <input maxlength="12" minlength="4" pInputText id="price" type="text" formControlName="price">
             <div class="error" *ngIf="invalidField('price')" >
               <span  *ngIf="myForm.controls?.['price']?.errors?.['required']" > Campo Obligatorio </span>
+              <span  *ngIf="myForm.controls?.['price']?.errors?.['pattern']"> Solo se permiten numeros </span>
+              <span  *ngIf="myForm.controls?.['price']?.errors?.['minlength']"> Minimo 4 caracteres </span>
+              <span  *ngIf="myForm.controls?.['price']?.errors?.['maxlength']"> Maximo 11 caracteres </span>
             </div>
           </div>
         </div>

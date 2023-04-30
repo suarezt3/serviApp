@@ -25,7 +25,6 @@
         <option value="CC">Cedula de ciudadania</option>
         <option value="NIT">NIT</option>
       </select>
-      <!-- <p-dropdown [options]="cities?.name" formControlName="documentType" optionLabel="name"></p-dropdown> -->
       <div class="error" *ngIf="invalidField('documentType')" >
         <span  *ngIf="myForm.controls?.['documentType']?.errors?.['required']" > Campo Obligatorio </span>
       </div>
@@ -33,9 +32,19 @@
 
     <label for="phone">Telefono</label>
     <div class="field col">
-      <input pInputText class="input" id="phone" type="number" formControlName="phone">
+      <input
+         maxlength="11"
+         minlength="4"
+         pInputText
+         class="input"
+         id="phone"
+         type="text"
+         formControlName="phone">
       <div class="error" *ngIf="invalidField('phone')" >
-        <span  *ngIf="myForm.controls?.['phone']?.errors?.['required']" > Campo Obligatorio </span>
+        <span  *ngIf="myForm.controls?.['phone']?.errors?.['required']"> Campo Obligatorio </span>
+        <span  *ngIf="myForm.controls?.['phone']?.errors?.['pattern']"> Solo se permiten numeros </span>
+        <span  *ngIf="myForm.controls?.['phone']?.errors?.['minlength']"> Minimo 4 caracteres </span>
+        <span  *ngIf="myForm.controls?.['phone']?.errors?.['maxlength']"> Maximo 11 caracteres </span>
       </div>
     </div>
 
@@ -58,9 +67,19 @@
   <div class="mx-4">
     <label for="document">Numero de Documento</label>
     <div class="field col">
-      <input pInputText class="input" id="document" type="number" formControlName="numberDocument">
+      <input
+           maxlength="12"
+           minlength="4"
+           pInputText
+           class="input"
+           id="document"
+           type="text"
+           formControlName="numberDocument">
       <div class="error" *ngIf="invalidField('numberDocument')" >
         <span  *ngIf="myForm.controls?.['numberDocument']?.errors?.['required']" > Campo Obligatorio </span>
+        <span  *ngIf="myForm.controls?.['numberDocument']?.errors?.['pattern']"> Solo se permiten numeros </span>
+        <span  *ngIf="myForm.controls?.['numberDocument']?.errors?.['minlength']"> Minimo 4 caracteres </span>
+        <span  *ngIf="myForm.controls?.['numberDocument']?.errors?.['maxlength']"> Maximo 12 caracteres </span>
       </div>
     </div>
 

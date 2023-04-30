@@ -16,16 +16,6 @@ moment.locale("es");
 })
 export class ChartComponent implements OnInit {
 
-  //public result: any = 0 || undefined; // Resultado de total de autos de una marca para la grafica
-  //public cars!: any;
-  //public year!: number;
-  //public month!: string;
-  //public brand!: string;
-  //public brands! : BRANDS[];
-  //public months! : MONTH[];
-  //public years!  : YEAR[];
-  //public carsCount!: number; // Total de autos de una marca
-
   public jobs!: JOB[];
   public myForm! : FormGroup
 

@@ -18,10 +18,10 @@ import { BRANDS } from 'src/app/interfaces/brands.interface';
 export class FormComponent implements OnInit  {
 
   public brands!: BRANDS[];
-  // cities!: any;
   public myForm!: FormGroup;
   public plate: string = ''
   public id: any;
+  public limitNumber: string  = "^([0-9]+)$"
 
 
   constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService, private plateValidator: ValidatorServicesService, private activatedRoute: ActivatedRoute, private router: Router) {this.obtenerParametroUrl()}
@@ -35,11 +35,11 @@ export class FormComponent implements OnInit  {
     })
 
     this.myForm = this.fb.group({
-      name           : ['', [Validators.required,  Validators.maxLength(50)]],
+      name           : ['', [Validators.required, Validators.maxLength(50), Validators.minLength(5)]],
       documentType   : ['', [Validators.required]],
-      numberDocument : [  , [Validators.required]],
+      numberDocument : [  , [Validators.required, Validators.pattern(this.limitNumber)]],
       email          : ['', [Validators.required, Validators.email]],
-      phone          : ['', [Validators.required]],
+      phone          : ['', [Validators.required, Validators.pattern(this.limitNumber)]],
       vehicle        : ['', [Validators.required, Validators.maxLength(20)]],
       vehicleBrand   : ['', [Validators.required]],
       plate          : [''.toUpperCase(), [Validators.required, Validators.minLength(6), Validators.maxLength(6)], [this.plateValidator ]]
@@ -80,11 +80,6 @@ export class FormComponent implements OnInit  {
   }
 
   save() {
-    // let placa: string = this.myForm.get('plate')?.value.toUpperCase()
-    // this.dataService.getPlate(placa).subscribe((resp) => {
-    //   this.plate = resp[0]?.plate
-    // });
-
      const form = [{
        name             : this.myForm.get('name')?.value,
        documentType     : this.myForm.get('documentType')?.value,
@@ -108,7 +103,6 @@ export class FormComponent implements OnInit  {
         let editForm = this.myForm.value
         this.dataService.editClientDocument(this.id, editForm).subscribe();
         this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Cliente actualizado satisfactoriamente'});
-        console.log("FORMEDIT", editForm);
         setTimeout(() => {
           this.router.navigate(['/']);
         },2000)

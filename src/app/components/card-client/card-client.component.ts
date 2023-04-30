@@ -26,6 +26,7 @@ export class CardClientComponent implements OnInit {
   public numberDocument!: number | null;
   public name!: string | null;
   public countJobs: any = 0;
+  public limitNumber: string  = "^([0-9]+)$"
 
 
   constructor(private fb: FormBuilder, private dataService: DataService, private activatedRoute: ActivatedRoute, private messageService: MessageService) {}
@@ -65,12 +66,6 @@ export class CardClientComponent implements OnInit {
        this.countJobs = this.jobs.length
     });
 
-
-  //  this.dataService.getJobsClients(this.id).subscribe((res) => {
-  //   this.jobs = res;
-  //  })
-
-
     /**
      * Formulario para crear los trabajos del cliente
      */
@@ -78,8 +73,8 @@ export class CardClientComponent implements OnInit {
       typeJobs: ['', [Validators.required]],
       date: ['', [Validators.required]],
       nextDate: ['', [Validators.required]],
-      price: ['', [Validators.required]],
-      numberOrder: ['', [Validators.required]],
+      price: ['', [Validators.required, Validators.pattern(this.limitNumber)]],
+      numberOrder: ['', [Validators.required,  Validators.pattern(this.limitNumber)]],
       description: ['', [Validators.required]],
       user: ['', [Validators.required]],
       vehicle: [''],
