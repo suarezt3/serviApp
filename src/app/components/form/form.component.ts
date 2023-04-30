@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
-import {MessageService} from 'primeng/api';
+import {Message, MessageService} from 'primeng/api';
 import { __values } from 'tslib';
 import { ValidatorServicesService } from 'src/app/services/validator-services.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -22,11 +22,13 @@ export class FormComponent implements OnInit  {
   public plate: string = ''
   public id: any;
   public limitNumber: string  = "^([0-9]+)$"
-
+  public messages!: Message[];
 
   constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService, private plateValidator: ValidatorServicesService, private activatedRoute: ActivatedRoute, private router: Router) {this.obtenerParametroUrl()}
 
   ngOnInit(): void {
+
+    this.messages = [{ severity: 'warn', summary: 'Alerta', detail: 'Por favor tener en cuenta de editar solo los campos que necesarios' }];
 
     this.activatedRoute.params.subscribe(({ id }) => this.id = id) // Tomar el ID del cliente
 

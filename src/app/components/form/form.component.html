@@ -1,6 +1,7 @@
 <p-toast></p-toast>
 <div class="title">
   <h2> {{ this.id ? "Editando datos del cliente": "Ingresa los datos del cliente"}} </h2>
+  <p-messages [style]="{'width':'50%', 'margin':'auto'}"[(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
 </div>
 <div class="form" [formGroup]="myForm" (ngSubmit)="save()" >
   <div class="mx-4">
@@ -123,7 +124,6 @@
               <span  *ngIf="myForm.controls?.['plate']?.errors?.['plateExist']" > Esta placa ya existe en la base de datos </span>
             </div>
     </div>
-
     <div>
       <p-button (click)="save()" styleClass="p-button-warning">{{this.id ? "Editar":"Guardar"}}</p-button>
     </div>
