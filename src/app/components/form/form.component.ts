@@ -28,7 +28,7 @@ export class FormComponent implements OnInit  {
 
   ngOnInit(): void {
 
-    this.messages = [{ severity: 'error', summary: 'Alerta', detail: 'Por favor tener en cuenta de editar solo los campos que necesarios' }];
+    this.messages = [{ severity: 'error', summary: 'Alerta', detail: 'Por favor tener en cuenta de editar solo los campos necesarios' }];
 
     this.activatedRoute.params.subscribe(({ id }) => this.id = id) // Tomar el ID del cliente
 
