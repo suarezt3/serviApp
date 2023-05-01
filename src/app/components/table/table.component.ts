@@ -33,7 +33,6 @@ export class TableComponent implements OnInit {
     });
 
     this.clienteService.getJobs().subscribe((resp: any) => {
-      console.log("TRABAJOS", resp);
       this.jobs = resp
     })
 
@@ -44,8 +43,6 @@ export class TableComponent implements OnInit {
              return JSON.stringify(obj) === JSON.stringify(item);
            });
          });
-         console.log("AUTO",brands);
-
          this.auto = brands
        })
 

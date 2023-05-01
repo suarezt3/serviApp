@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="pt-6">
+  <form [formGroup]="loginForm" class="flex flex-column m-auto w-30rem pt-4 pb-6 bg-primary-400 border-round-sm" (ngSubmit)="login()">
+    <div class="m-auto w-18rem mb-2">
+      <h3 class="text-center">Login</h3>
+      <input
+        class="w-18rem"
+        type="text"
+        pInputText
+        formControlName="user"
+        placeholder="Usuario"/>
+        <div class="error" *ngIf="invalidField('user')" >
+          <span  *ngIf="loginForm.controls?.['user']?.errors?.['required']" > Campo Obligatorio </span>
+        </div>
+    </div>
+    <div class="m-auto w-18rem mb-2">
+      <input
+        class="w-18rem"
+        type="text"
+        pInputText
+        formControlName="password"
+        placeholder="Password"/>
+        <div class="error" *ngIf="invalidField('password')" >
+          <span  *ngIf="loginForm.controls?.['password']?.errors?.['required']" > Campo Obligatorio </span>
+        </div>
+    </div>
+
+    <div class="m-auto w-18rem">
+      <button class="m-auto w-18rem bg-yellow-500 border-round-sm border-yellow-500 border-solid h-2rem cursor-pointer text-base" type="submit">Ingresar</button>
+      <p class="text-red-600">{{messageError}}</p>
+    </div>
+
+  </form>
+</div>

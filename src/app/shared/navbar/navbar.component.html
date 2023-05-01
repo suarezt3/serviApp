@@ -1,7 +1,7 @@
 <!-- <p-toast></p-toast> -->
 <p-toolbar styleClass="mb-4 gap-2">
   <div class="p-toolbar-group-start">
-      <p-button [routerLink]="['/formulario']" routerLinkActive="router-link-active"  class="btn" label="Nuevo registro" icon="pi pi-plus"></p-button>
+      <p-button [routerLink]="['/formulario']" routerLinkActive="router-link-active"  class="mr-2" label="Nuevo registro" icon="pi pi-plus"></p-button>
       <p-button
       pRipple
       icon="pi pi-chart-bar"
@@ -12,8 +12,10 @@
     ></p-button>
   </div>
   <div class="p-toolbar-group-end">
-      <button [routerLink]="['/']" pButton pRipple label="Tabla" icon="pi pi-align-justify" class="p-button-help btn"></button>
-      <!-- <p-button label="Exportar" icon="pi pi-upload" styleClass="p-button-success"></p-button> -->
+    <p class="text-xl font-bold mr-3"><i class="pi pi-user mr-2" style="font-size: 1.2rem"></i>{{user?.nombre}}</p>
+      <button [routerLink]="['/']" pButton pRipple label="Tabla" icon="pi pi-align-justify" class="p-button-help mr-2"></button>
+      <p-button *ngIf="token" (click)="logout()" label="Cerrar sesion" styleClass="p-button-danger"></p-button>
+      <p-button *ngIf="!token" [routerLink]="['/login']"   label="iniciar sesion" styleClass="p-button-success" class="ml-2"></p-button>
 
   </div>
 </p-toolbar>

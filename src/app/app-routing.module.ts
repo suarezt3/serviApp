@@ -6,17 +6,24 @@ import { FormComponent } from './components/form/form.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { TableComponent } from './components/table/table.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
 
-  { path: 'registro', component: RegisterComponent },
+  { path: 'registro', component: RegisterComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'formulario', component: FormComponent },
-  { path: 'editar/:id', component: FormComponent },
-  { path: 'tabla', component: TableComponent },
-  { path: 'graficas', component: ChartComponent },
-  { path: ':id', component: CardClientComponent },
-  { path: 'graficas/:id', component: CardClientComponent },
+  { path: 'formulario', component: FormComponent, canActivate: [ AuthGuard ],
+  canMatch: [ AuthGuard ] },
+  { path: 'editar/:id', component: FormComponent, canActivate: [ AuthGuard ],
+  canMatch: [ AuthGuard ] },
+  { path: 'tabla', component: TableComponent, canActivate: [ AuthGuard ],
+  canMatch: [ AuthGuard ] },
+  { path: 'graficas', component: ChartComponent, canActivate: [ AuthGuard ],
+  canMatch: [ AuthGuard ] },
+  { path: ':id', component: CardClientComponent, canActivate: [ AuthGuard ],
+  canMatch: [ AuthGuard ] },
+  { path: 'graficas/:id', component: CardClientComponent, canActivate: [ AuthGuard ],
+  canMatch: [ AuthGuard ] },
   { path: '**', component: TableComponent }
 
 ];
