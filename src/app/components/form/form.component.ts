@@ -106,7 +106,7 @@ export class FormComponent implements OnInit  {
         this.dataService.editClientDocument(this.id, editForm).subscribe();
         this.messageService.add({severity:'success', summary: 'Enviado', detail: 'Cliente actualizado satisfactoriamente'});
         setTimeout(() => {
-          this.router.navigate(['/']);
+          this.router.navigate([this.id]);
         },2000)
 
       }
