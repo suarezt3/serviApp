@@ -18,9 +18,10 @@
         </div>
        </div>
        <div class="div-2">
-        <h4>Trabajos realizados {{this.countJobs}} </h4>
-        <button class="p-button-warning btn" pButton (click)="showBasicDialog()" icon="pi pi-car" label="Nuevo trabajo"></button>
-        <p-dialog header="Ingresa los datos del trabajo realizado" [(visible)]="displayBasic2" [baseZIndex]="10000">
+         <h4>Trabajos realizados {{this.countJobs}} </h4>
+         <button class="p-button-warning btn" pButton (click)="showBasicDialog()" icon="pi pi-car" label="Nuevo trabajo"></button>
+         <button [routerLink]="['/editar', client?.plate || undefined]" icon="pi pi-file-edit"  pButton pRipple type="button" label="Editar datos" class="p-button-danger btn"></button>
+         <p-dialog header="Ingresa los datos del trabajo realizado" [(visible)]="displayBasic2" [baseZIndex]="10000">
 
            <form class="form-content" [formGroup]="myForm" (ngSubmit)="submit()">
          <div class=" p-fluid p-grid p-formgrid">
