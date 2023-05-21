@@ -72,7 +72,7 @@ export class CardClientComponent implements OnInit {
     this.myForm = this.fb.group({
       typeJobs: ['', [Validators.required]],
       date: ['', [Validators.required]],
-      nextDate: ['', [Validators.required]],
+      nextDate: [''],
       price: ['', [Validators.required, Validators.pattern(this.limitNumber)]],
       numberOrder: ['', [Validators.required,  Validators.pattern(this.limitNumber)]],
       description: ['', [Validators.required]],

@@ -34,7 +34,7 @@
               <option value="Otros">Otros</option>
             </select>
             <div class="error" *ngIf="invalidField('typeJobs')" >
-              <span  *ngIf="myForm.controls?.['typeJobs']?.errors?.['required']" > Campo Obligatorio </span>
+              <span  *ngIf="myForm.controls?.['typeJobs']?.errors?.['required']" > Campo obligatorio </span>
             </div>
           </div>
 
@@ -42,37 +42,39 @@
             <label>Fecha</label>
             <p-calendar formControlName="date"></p-calendar>
             <div class="error" *ngIf="invalidField('date')" >
-              <span  *ngIf="myForm.controls?.['date']?.errors?.['required']" > Campo Obligatorio </span>
+              <span  *ngIf="myForm.controls?.['date']?.errors?.['required']" > Campo obligatorio </span>
             </div>
           </div>
 
-          <div class="p-field input">
-          <label>Proximo mantenimiento</label>
+          <div class="p-field input" *ngIf="myForm.controls?.['typeJobs']?.value != 'Otros'" >
+          <label>Proximo {{myForm.controls?.['typeJobs']?.value}}</label>
             <p-calendar class="calendar"  formControlName="nextDate"></p-calendar>
-            <div class="error" *ngIf="invalidField('nextDate')" >
-              <span  *ngIf="myForm.controls?.['nextDate']?.errors?.['required']" > Campo Obligatorio </span>
-            </div>
+            <!-- <div class="error" *ngIf="invalidField('nextDate')" >
+              <span  *ngIf="myForm.controls?.['nextDate']?.errors?.['required']" > Campo obligatorio </span>
+            </div> -->
           </div>
 
           <label for="order">Nº de orden</label>
           <div class="p-field input">
-            <input maxlength="12" minlength="4" pInputText  id="order" type="text" formControlName="numberOrder">
+            <input maxlength="12" minlength="4" pInputText  id="order" type="text" formControlName="numberOrder" >
             <div class="error" *ngIf="invalidField('numberOrder')" >
-              <span  *ngIf="myForm.controls?.['numberOrder']?.errors?.['required']" > Campo Obligatorio </span>
+              <span  *ngIf="myForm.controls?.['numberOrder']?.errors?.['required']" > Campo obligatorio </span>
               <span  *ngIf="myForm.controls?.['numberOrder']?.errors?.['pattern']"> Solo se permiten numeros </span>
               <span  *ngIf="myForm.controls?.['numberOrder']?.errors?.['minlength']"> Minimo 4 caracteres </span>
               <span  *ngIf="myForm.controls?.['numberOrder']?.errors?.['maxlength']"> Maximo 11 caracteres </span>
             </div>
+            <div><span class="error">Escriba el numero sin puntos ni comas</span></div>
           </div>
           <label for="price">Valor</label>
           <div class="p-field input">
             <input maxlength="12" minlength="4" pInputText id="price" type="text" formControlName="price">
             <div class="error" *ngIf="invalidField('price')" >
-              <span  *ngIf="myForm.controls?.['price']?.errors?.['required']" > Campo Obligatorio </span>
+              <span  *ngIf="myForm.controls?.['price']?.errors?.['required']" > Campo obligatorio </span>
               <span  *ngIf="myForm.controls?.['price']?.errors?.['pattern']"> Solo se permiten numeros </span>
               <span  *ngIf="myForm.controls?.['price']?.errors?.['minlength']"> Minimo 4 caracteres </span>
               <span  *ngIf="myForm.controls?.['price']?.errors?.['maxlength']"> Maximo 11 caracteres </span>
             </div>
+            <div><span class="error">Escriba el numero sin puntos ni comas</span></div>
           </div>
         </div>
         <div>
@@ -80,7 +82,7 @@
           <div class="input">
             <textarea formControlName="description" rows="5" cols="61" pInputTextarea></textarea>
             <div class="error" *ngIf="invalidField('description')" >
-              <span  *ngIf="myForm.controls?.['description']?.errors?.['required']" > Campo Obligatorio </span>
+              <span  *ngIf="myForm.controls?.['description']?.errors?.['required']" > Campo obligatorio </span>
             </div>
           </div>
         </div>
