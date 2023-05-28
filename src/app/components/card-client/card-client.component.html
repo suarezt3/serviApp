@@ -97,6 +97,12 @@
 </div>
 <p-accordion>
   <p-accordionTab *ngFor="let item of jobs"  header="{{item?.date | date: 'longDate'}} - {{item.typeJobs}}" >
+
+    <div>
+      <h3>Proximo trabajo</h3>
+      <app-next-date [jobs]="item"  [nextDate]="item?.nextDate" ></app-next-date>
+    </div>
+
     <div>
       <h3>Orden:</h3>
       <span>{{item.numberOrder}}</span>
