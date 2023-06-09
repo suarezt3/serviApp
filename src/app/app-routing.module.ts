@@ -18,12 +18,9 @@ const routes: Routes = [
   canMatch: [ AuthGuard ] },
   { path: 'tabla', component: TableComponent, canActivate: [ AuthGuard ],
   canMatch: [ AuthGuard ] },
-  { path: 'graficas', component: ChartComponent, canActivate: [ AuthGuard ],
-  canMatch: [ AuthGuard ] },
-  { path: ':id', component: CardClientComponent, canActivate: [ AuthGuard ],
-  canMatch: [ AuthGuard ] },
-  { path: 'graficas/:id', component: CardClientComponent, canActivate: [ AuthGuard ],
-  canMatch: [ AuthGuard ] },
+  { path: 'graficas', component: ChartComponent},
+  { path: ':id', component: CardClientComponent},
+  { path: 'graficas/:id', component: CardClientComponent},
   { path: '**', component: TableComponent }
 
 ];
