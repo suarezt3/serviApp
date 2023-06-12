@@ -15,8 +15,11 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class CardClientComponent implements OnInit {
 
+
+  public sidebarVisible!: boolean;
   public client        : any = [] || undefined;
   public jobs!         : any | undefined;
+  public FiltersJobs!         : any | undefined;
   public id = "";
   public myForm!       : FormGroup;
   public displayBasic2!: boolean;
@@ -64,6 +67,10 @@ export class CardClientComponent implements OnInit {
     .subscribe( (jobs) => {
        this.jobs = jobs;
        this.countJobs = this.jobs.length
+        let filterJobs = this.jobs.reverse().filter((objeto: any, indice:any, self: any) =>
+                    indice === self.findIndex((t: any) => t.plate === objeto.plate && t.typeJobs === objeto.typeJobs)
+                   );
+                     this.FiltersJobs = filterJobs
     });
 
     /**
@@ -123,6 +130,7 @@ export class CardClientComponent implements OnInit {
   showBasicDialog() {
     this.displayBasic2 = true;
 }
+
 
 
 }

@@ -17,6 +17,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {AccordionModule} from 'primeng/accordion';
 import { ChartModule } from 'primeng/chart';
 import { TagModule } from 'primeng/tag';
+import { SidebarModule } from 'primeng/sidebar';
 
 
 
@@ -40,7 +41,8 @@ import { TagModule } from 'primeng/tag';
     InputTextareaModule,
     AccordionModule,
     ChartModule,
-    TagModule
+    TagModule,
+    SidebarModule
   ],
   exports: [
     ToolbarModule,
@@ -57,7 +59,8 @@ import { TagModule } from 'primeng/tag';
     InputTextareaModule,
     AccordionModule,
     ChartModule,
-    TagModule
+    TagModule,
+    SidebarModule
   ]
 })
 export class PrimengModule { }
