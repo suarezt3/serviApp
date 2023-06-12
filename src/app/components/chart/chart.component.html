@@ -61,7 +61,7 @@
               <td style="width:16%">{{jobs?.vehicleBrand}}</td>
               <td style="width:16%">{{jobs?.typeJobs}} - {{jobs?.description}}</td>
               <td style="width:20%"> <app-next-date [jobs]="jobs"  [nextDate]="jobs?.nextDate" ></app-next-date> </td>
-              <td><button [routerLink]="['/graficas',jobs?.plate|| undefined]" pButton pRipple type="button" label="Nuevo trabajo" class="p-button-outlined btn" ></button></td>
+              <td><button [routerLink]="['/graficas',jobs?.plate|| undefined]" pButton pRipple type="button" label="Ver mas" class="p-button-outlined btn" ></button></td>
           </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">
