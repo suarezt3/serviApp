@@ -46,7 +46,7 @@
       <ng-template pTemplate="body" let-data>
           <tr>
             <td style="width:16%">{{data?.name}}</td>
-            <td style="width:16%">{{data?.numberDocument}}</td>
+            <td style="width:16%">{{data?.numberDocument ? data?.numberDocument : 'No registra'}}</td>
             <td style="width:16%">{{data?.vehicleBrand}}</td>
             <td style="width:16%">{{data?.vehicle}}</td>
             <td style="width:16%">{{data?.plate | uppercase}}</td>

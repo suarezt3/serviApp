@@ -13,3 +13,8 @@ input[type=number] { -moz-appearance:textfield; }
   color: rgb(245, 12, 12);
   font-size: small;
 }
+
+.other {
+  font-size: small;
+  color: black;
+}

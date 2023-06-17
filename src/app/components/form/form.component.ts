@@ -86,8 +86,8 @@ export class FormComponent implements OnInit  {
        name             : this.myForm.get('name')?.value,
        documentType     : this.myForm.get('documentType')?.value,
        numberDocument   : this.myForm.get('numberDocument')?.value,
-       email            : this.myForm.get('email')?.value?? null,
-       phone            : this.myForm.get('phone')?.value?? null,
+       email            : this.myForm.get('email')?.value,
+       phone            : this.myForm.get('phone')?.value,
        vehicle          : this.myForm.get('vehicle')?.value,
        vehicleBrand     : this.myForm.get('vehicleBrand')?.value,
        plate            : this.myForm.get('plate')?.value.toUpperCase()
