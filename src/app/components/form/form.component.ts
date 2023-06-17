@@ -39,9 +39,9 @@ export class FormComponent implements OnInit  {
     this.myForm = this.fb.group({
       name           : ['', [Validators.required, Validators.maxLength(50), Validators.minLength(5)]],
       documentType   : ['', [Validators.required]],
-      numberDocument : [  , [Validators.required, Validators.pattern(this.limitNumber)]],
-      email          : ['', [Validators.required, Validators.email]],
-      phone          : ['', [Validators.required, Validators.pattern(this.limitNumber)]],
+      numberDocument : [  , [Validators.pattern(this.limitNumber)]],
+      email          : ['', [Validators.email]],
+      phone          : ['', [Validators.pattern(this.limitNumber)]],
       vehicle        : ['', [Validators.required, Validators.maxLength(20)]],
       vehicleBrand   : ['', [Validators.required]],
       plate          : [''.toUpperCase(), [Validators.required, Validators.minLength(6), Validators.maxLength(6)], [this.plateValidator ]]
@@ -86,8 +86,8 @@ export class FormComponent implements OnInit  {
        name             : this.myForm.get('name')?.value,
        documentType     : this.myForm.get('documentType')?.value,
        numberDocument   : this.myForm.get('numberDocument')?.value,
-       email            : this.myForm.get('email')?.value,
-       phone            : this.myForm.get('phone')?.value,
+       email            : this.myForm.get('email')?.value?? null,
+       phone            : this.myForm.get('phone')?.value?? null,
        vehicle          : this.myForm.get('vehicle')?.value,
        vehicleBrand     : this.myForm.get('vehicleBrand')?.value,
        plate            : this.myForm.get('plate')?.value.toUpperCase()

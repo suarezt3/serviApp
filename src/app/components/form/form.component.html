@@ -25,6 +25,7 @@
       <select  class="input" formControlName="documentType">
         <option value="CC">Cedula de ciudadania</option>
         <option value="NIT">NIT</option>
+        <option value="NIT">No registra</option>
       </select>
       <div class="error" *ngIf="invalidField('documentType')" >
         <span  *ngIf="myForm.controls?.['documentType']?.errors?.['required']" > Campo Obligatorio </span>
@@ -42,7 +43,7 @@
          type="text"
          formControlName="phone">
       <div class="error" *ngIf="invalidField('phone')" >
-        <span  *ngIf="myForm.controls?.['phone']?.errors?.['required']"> Campo Obligatorio </span>
+        <!-- <span  *ngIf="myForm.controls?.['phone']?.errors?.['required']"> Campo Obligatorio </span> -->
         <span  *ngIf="myForm.controls?.['phone']?.errors?.['pattern']"> Solo se permiten numeros </span>
         <span  *ngIf="myForm.controls?.['phone']?.errors?.['minlength']"> Minimo 4 caracteres </span>
         <span  *ngIf="myForm.controls?.['phone']?.errors?.['maxlength']"> Maximo 11 caracteres </span>
@@ -77,7 +78,7 @@
            type="text"
            formControlName="numberDocument">
       <div class="error" *ngIf="invalidField('numberDocument')" >
-        <span  *ngIf="myForm.controls?.['numberDocument']?.errors?.['required']" > Campo Obligatorio </span>
+        <!-- <span  *ngIf="myForm.controls?.['numberDocument']?.errors?.['required']" > Campo Obligatorio </span> -->
         <span  *ngIf="myForm.controls?.['numberDocument']?.errors?.['pattern']"> Solo se permiten numeros </span>
         <span  *ngIf="myForm.controls?.['numberDocument']?.errors?.['minlength']"> Minimo 4 caracteres </span>
         <span  *ngIf="myForm.controls?.['numberDocument']?.errors?.['maxlength']"> Maximo 12 caracteres </span>
@@ -93,7 +94,7 @@
           type="text"
           formControlName="email">
           <div class="error" *ngIf="invalidField('email')" >
-            <span  *ngIf="myForm.controls?.['email']?.errors?.['required']" > Campo Obligatorio </span>
+            <!-- <span  *ngIf="myForm.controls?.['email']?.errors?.['required']" > Campo Obligatorio </span> -->
             <span  *ngIf="myForm.controls?.['email']?.errors?.['email']" > Ingrese un email valido </span>
           </div>
     </div>
