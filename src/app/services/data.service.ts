@@ -11,6 +11,7 @@ export class DataService {
 
  private url             : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients"; //URL para traer todos los clientes
  private urlJobs         : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs"; //URL para los trabajos
+ private urlBrands         : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/brands"; //URL para traer todos las marcas de autos
 
 
 
@@ -134,7 +135,11 @@ getBrands() {
  * @returns Obtener las marcas de vehiculos
  */
 getBrandVehicles() {
-  return this.http.get<any>('../../assets/json/brands.json')
+  let headers = new HttpHeaders({
+    'apikey'       : environment.supabaseKey,
+    'Authorization': environment.authorization
+  })
+   return this.http.get<any>(this.urlBrands, {headers}).pipe()
 }
 
 /**

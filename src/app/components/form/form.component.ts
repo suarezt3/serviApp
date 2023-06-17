@@ -32,7 +32,7 @@ export class FormComponent implements OnInit  {
 
     this.activatedRoute.params.subscribe(({ id }) => this.id = id) // Tomar el ID del cliente
 
-    this.dataService.getBrandVehicles().subscribe((resp: BRANDS[]) => {
+    this.dataService.getBrandVehicles().subscribe((resp: any) => {
       this.brands = resp
     })
 
