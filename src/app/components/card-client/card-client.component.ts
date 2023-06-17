@@ -32,6 +32,7 @@ export class CardClientComponent implements OnInit {
   public limitNumber: string  = "^([0-9]+)$"
 
 
+
   constructor(private fb: FormBuilder, private dataService: DataService, private activatedRoute: ActivatedRoute, private messageService: MessageService) {}
 
 
@@ -83,7 +84,7 @@ export class CardClientComponent implements OnInit {
       price: ['', [Validators.required, Validators.pattern(this.limitNumber)]],
       numberOrder: ['', [Validators.required,  Validators.pattern(this.limitNumber)]],
       description: ['', [Validators.required]],
-      user: ['', [Validators.required]],
+      user: [''],
       vehicle: [''],
       vehicleBrand: [''],
       plate: [''],

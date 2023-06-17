@@ -124,8 +124,8 @@
           </form>
 
               <ng-template pTemplate="footer">
-          <p-button (click)="submit()" icon="pi pi-check" (click)="displayBasic2=false" label="Guardar" class="p-button-text"></p-button>
-          <p-button (click)="cancel()" icon="pi pi-times" (click)="displayBasic2=false" label="Cancelar"></p-button>
+          <button pButton (click)="submit()" icon="pi pi-check" [disabled]="myForm.invalid" (click)="displayBasic2=false" label="Guardar" class="p-button-success"></button>
+          <button pButton (click)="cancel()" icon="pi pi-times" (click)="displayBasic2=false" label="Cancelar" class="p-button-danger"></button>
       </ng-template>
   </p-dialog>
 
