@@ -72,17 +72,18 @@
             </div>
           </div>
 
+          <label>Fecha</label>
           <div class="p-field input">
-            <label>Fecha</label>
-            <p-calendar formControlName="date"></p-calendar>
+            <input class="date" type="date" formControlName="date">
             <div class="error" *ngIf="invalidField('date')" >
               <span  *ngIf="myForm.controls?.['date']?.errors?.['required']" > Campo obligatorio </span>
             </div>
           </div>
 
           <div class="p-field input" *ngIf="myForm.controls?.['typeJobs']?.value != 'Otros'" >
-          <label>Proximo {{myForm.controls?.['typeJobs']?.value}}</label>
-            <p-calendar class="calendar"  formControlName="nextDate"></p-calendar>
+            <div><label>Proximo {{myForm.controls?.['typeJobs']?.value}}</label></div>
+          <input class="date" type="date" formControlName="nextDate">
+            <!-- <p-calendar class="calendar"  formControlName="nextDate"></p-calendar> -->
             <!-- <div class="error" *ngIf="invalidField('nextDate')" >
               <span  *ngIf="myForm.controls?.['nextDate']?.errors?.['required']" > Campo obligatorio </span>
             </div> -->

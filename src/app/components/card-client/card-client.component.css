@@ -70,6 +70,13 @@ label{
   color: rgb(103, 103, 253);
 }
 
+.date {
+  width: 218px;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px rgba(0, 0, 0, 0.226) solid;
+  font-family: 'Montserrat', sans-serif;
+}
 
 /*Media Queris*/
  @media only screen and (min-width: 550px) {
