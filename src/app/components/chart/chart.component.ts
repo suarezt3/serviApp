@@ -36,9 +36,10 @@ export class ChartComponent implements OnInit {
          * Funcion para eliminar clientes duplicados y dejar al cliente solo con le ultimo trabajo realizado
          */
              let filterJobs = resp.reverse().filter((objeto: any, indice:any, self: any) =>
-                   indice === self.findIndex((t: any) => t.plate === objeto.plate && t.nombre === objeto.nombre)
+                   indice === self.findIndex((t: any) => t.plate === objeto.plate && t.name === objeto.name)
                   );
-                    this.jobs = filterJobs
+                  this.jobs = filterJobs
+
       });
 
       this.matchModeOptions = [
