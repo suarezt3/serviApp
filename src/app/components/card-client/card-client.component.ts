@@ -29,6 +29,7 @@ export class CardClientComponent implements OnInit {
   public numberDocument!: number | null;
   public name!: string | null;
   public countJobs: any = 0;
+  public typeJobs: any[] = []
   public limitNumber: string  = "^([0-9]+)$"
 
 
@@ -37,6 +38,15 @@ export class CardClientComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    /**
+     * Traer los tipos de trabajos
+     */
+    this.dataService.getTypeJobs().subscribe((resp: any) => {
+      this.typeJobs = resp
+    })
+
+
 
     /**
      * Id del cliente

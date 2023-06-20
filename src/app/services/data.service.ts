@@ -11,7 +11,8 @@ export class DataService {
 
  private url             : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/clients"; //URL para traer todos los clientes
  private urlJobs         : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/jobs"; //URL para los trabajos
- private urlBrands         : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/brands"; //URL para traer todos las marcas de autos
+ private urlBrands       : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/brands"; //URL para traer todos las marcas de autos
+ private urlTypeJobs     : string = "https://grngoczncojjbtpiaflf.supabase.co/rest/v1/typeJobs"; //URL para traer todos los tipos de trabajos
 
 
 
@@ -141,6 +142,21 @@ getBrandVehicles() {
   })
    return this.http.get<any>(this.urlBrands, {headers}).pipe()
 }
+
+
+/**
+ *
+ * @returns Obtener los tipos de trabajo
+ */
+getTypeJobs() {
+  let headers = new HttpHeaders({
+    'apikey'       : environment.supabaseKey,
+    'Authorization': environment.authorization
+  })
+   return this.http.get<any>(`${this.urlTypeJobs}`, {headers}).pipe()
+}
+
+
 
 /**
  *
