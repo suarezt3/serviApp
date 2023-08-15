@@ -157,6 +157,19 @@ getTypeJobs() {
 }
 
 
+/**
+ *
+ * @returns Para eliminar un trabajo
+ */
+deleteJobs(order: number) {
+  let headers = new HttpHeaders({
+    'apikey'       : environment.supabaseKey,
+    'Authorization': environment.authorization
+  })
+   return this.http.delete<any>(`${this.urlJobs}?numberOrder=eq.${order}`, {headers}).pipe()
+}
+
+
 
 /**
  *

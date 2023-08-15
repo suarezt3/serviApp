@@ -105,6 +105,17 @@ export class CardClientComponent implements OnInit {
 
   }
 
+
+  deleteOrder(order: number) {
+    this.dataService.deleteJobs(order).subscribe()
+    this.messageService.add({severity:'error', summary: 'Eliminado', detail: 'Trabajo eliminado con exito'});
+     setTimeout(() => {
+      window.location.reload()
+    }, 2000);
+
+  }
+
+
   invalidField( field: string ) {
     return this.myForm.get(field)?.invalid
             && this.myForm.get(field)?.touched;

@@ -149,7 +149,7 @@
       <span>{{item?.description}}</span>
     </div>
     <div>
-      <button icon="pi pi-trash"  pButton pRipple type="button" label="Eliminar trabajo" class="p-button-danger btn"></button>
+      <button (click)="deleteOrder(item.numberOrder)" icon="pi pi-trash"  pButton pRipple type="button" label="Eliminar trabajo" class="p-button-danger btn"></button>
     </div>
   </p-accordionTab>
 </p-accordion>
