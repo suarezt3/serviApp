@@ -144,9 +144,12 @@
       <h3>Precio:</h3>
       <span>$ {{item?.price | currency: 'COP': 'symbol'}}</span>
     </div>
-    <div>
+    <div class="mb-4">
       <h3>Trabajo realizado:</h3>
       <span>{{item?.description}}</span>
+    </div>
+    <div>
+      <button icon="pi pi-trash"  pButton pRipple type="button" label="Eliminar trabajo" class="p-button-danger btn"></button>
     </div>
   </p-accordionTab>
 </p-accordion>
