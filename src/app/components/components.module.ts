@@ -15,6 +15,7 @@ import { FormComponent } from './form/form.component';
 import { CardClientComponent } from './card-client/card-client.component';
 import { ChartComponent } from './chart/chart.component';
 import { NextDateComponent } from './next-date/next-date.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 
 
@@ -28,6 +29,7 @@ import { NextDateComponent } from './next-date/next-date.component';
     CardClientComponent,
     ChartComponent,
     NextDateComponent,
+    StatisticsComponent,
 
   ],
   exports: [
@@ -37,7 +39,8 @@ import { NextDateComponent } from './next-date/next-date.component';
     RegisterComponent,
     FormComponent,
     CardClientComponent,
-    NextDateComponent
+    NextDateComponent,
+    StatisticsComponent,
   ],
   imports: [
     CommonModule,

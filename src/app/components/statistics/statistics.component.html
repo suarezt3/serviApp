@@ -1,0 +1,31 @@
+<div [formGroup]="myForm" (ngSubmit)="send()">
+  <h3>Ingresa los datos a consultar</h3>
+  <div class="mb-4">
+    <label for="">Tipo de trabajo</label>
+    <div>
+      <input pInputText type="text" formControlName="typeJobs">
+    </div>
+  </div>
+  <div class="mb-4">
+    <label for="">Mes</label>
+    <div>
+      <input pInputText type="text" formControlName="month" >
+    </div>
+  </div>
+  <div class="mb-4">
+    <label for="">Marca de auto</label>
+    <div>
+      <select pInputText class="input" formControlName="brand" >
+        <option *ngFor="let item of brands"  [value]="item?.name">{{item?.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div>
+    <button (click)="send()" pButton styleClass="p-button-info">Consultar</button>
+  </div>
+</div>
+
+
+<div class="card">
+  <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+</div>
