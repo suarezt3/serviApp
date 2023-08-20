@@ -3,7 +3,9 @@
   <div class="mb-4">
     <label for="">Tipo de trabajo</label>
     <div>
-      <input pInputText type="text" formControlName="typeJobs">
+      <select pInputText class="inputSeletc" formControlName="typeJobs">
+        <option *ngFor="let item of typeJobs"  [value]="item?.name">{{item?.name}}</option>
+      </select>
     </div>
   </div>
   <div class="mb-4">

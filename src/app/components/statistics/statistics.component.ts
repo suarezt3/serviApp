@@ -28,6 +28,13 @@ export class StatisticsComponent {
         this.brands = resp
       })
 
+    /**
+     * Traer los tipos de trabajos
+     */
+    this.dataService.getTypeJobs().subscribe((resp: any) => {
+      this.typeJobs = resp
+    })
+
       this.myForm = this.fb.group ({
         typeJobs :['',[Validators.required]],
         month    :['', Validators.required],
